@@ -11,11 +11,11 @@
 
 % Mathematics
 \usepackage{amsmath, amssymb, amsfonts, amsthm, mathtools, fixmath}
+\mathtoolsset{showonlyrefs=true}
 \usepackage{esint, esvect} % integrals and vectors
 \usepackage{systeme} % equation system
 \usepackage{commath} % partials and differentials
 \usepackage{icomma} % smart comma ($0,2$ is a number)
-\mathtoolsset{showonlyrefs=true}
 
 % Floats
 \usepackage{float}
@@ -44,7 +44,7 @@
 \newtheorem{remark}{Замечание}
 \newtheorem*{solution}{Решение}
 
-\usepackage[top=30mm,bottom=25mm,left=25mm,right=10mm]{geometry}
+\usepackage[top=20mm,bottom=20mm,left=20mm,right=20mm]{geometry}
 
 \usepackage{lastpage} % how many pages
 
@@ -62,11 +62,6 @@
 %\usepackage[style=authoryear,maxcitenames=2,backend=biber,sorting=nty]{biblatex}
 %\bibliography{}
 
-% custom maketitle
-\usepackage{titling}
-\setlength{\droptitle}{-5em}
-\posttitle{\end{center}\vspace{-4em}}
-
 \renewcommand{\epsilon}{\ensuremath{\varepsilon}}
 \renewcommand{\phi}{\ensuremath{\varphi}}
 \renewcommand{\theta}{\vartheta}
@@ -76,30 +71,22 @@
 \renewcommand{\ge}{\ensuremath{\geqslant}}
 \renewcommand{\geq}{\ensuremath{\geqslant}}
 
-\newcommand\UniversityAbbr{МИИГАиК}
-\newcommand\ClassName{Название предмета}
-\newcommand\ClassSemester{Семестр}
-
-% custom header and footer
-\usepackage{fancyhdr}
-\pagestyle{fancy}
-\setlength{\headheight}{15pt}
-\renewcommand{\headrulewidth}{0.4pt}
-\lhead{\UniversityAbbr}
-\chead{\ClassName}
-\rhead{\ClassSemester}
-
 \usepackage[useregional]{datetime2}
 
-\DTMsavedate{lessondate}{2018-02-09}
+% custom maketitle
+\usepackage{titling}
+\setlength{\droptitle}{-4em}
+\posttitle{\end{center}\vspace{-4em}}
 
-\title{Практическое занятие № X \\
-\bf\large Тема практического занятия}
+\title{{\Large Название курса}\\ 
+    {\bf\Large Практическое занятие № 1} \\
+{\Large Тема занятия}}
 \author{}
-\date{\normalsize \DTMusedate{lessondate}}
+\DTMsavedate{lessondate}{2018-02-09}
+\date{\DTMusedate{lessondate}}
 
 \begin{document}
-\maketitle\thispagestyle{fancyplain}
+\maketitle
 
 %\printbibliography
 \end{document}
