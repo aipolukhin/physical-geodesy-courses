@@ -1,0 +1,134 @@
+\documentclass[11pt, a4paper,addpoints]{exam}
+
+% Languages and fonts
+\usepackage{cmap} 
+\usepackage[T2A]{fontenc}
+\usepackage[utf8]{inputenc} 
+\usepackage[english, russian]{babel}
+\usepackage{microtype}
+\usepackage{indentfirst}
+\frenchspacing
+
+% Mathematics
+\usepackage{amsmath, amssymb, amsfonts, amsthm, mathtools, fixmath}
+\mathtoolsset{showonlyrefs=true}
+\usepackage{esint, esvect} % integrals and vectors
+\usepackage{systeme} % equation system
+\usepackage{commath} % partials and differentials
+\usepackage{icomma} % smart comma ($0,2$ is a number)
+
+% Floats
+\usepackage{float}
+
+% Tables
+\usepackage{array,tabularx,tabulary,booktabs} % better tables
+\usepackage{longtable}
+\usepackage{multirow}
+
+% Graphics
+\usepackage[pdftex]{graphicx}
+\usepackage{wrapfig}
+
+% Theorems
+\renewcommand{\proofname}{Доказательство}
+
+%\theoremstyle{plain}
+\newtheorem{theorem}{Теорема}[section]
+
+%\theoremstyle{definition}
+\newtheorem{definition}{Определение}
+\newtheorem{corollary}{Следствие}[theorem]
+
+\theoremstyle{remark}
+\newtheorem{remark}{Замечание}
+
+\usepackage[top=20mm,bottom=20mm,left=20mm,right=20mm]{geometry}
+
+\usepackage{soul}
+\usepackage{enumerate} % better numbered lists
+\usepackage{hyperref}
+\usepackage{xcolor}
+\usepackage{tikz} % drawing
+
+%\usepackage{csquotes}
+%\usepackage[style=authoryear,maxcitenames=2,backend=biber,sorting=nty]{biblatex}
+%\bibliography{}
+
+\renewcommand{\epsilon}{\ensuremath{\varepsilon}}
+\renewcommand{\phi}{\ensuremath{\varphi}}
+\renewcommand{\theta}{\vartheta}
+\renewcommand{\kappa}{\ensuremath{\varkappa}}
+\renewcommand{\le}{\ensuremath{\leqslant}}
+\renewcommand{\leq}{\ensuremath{\leqslant}}
+\renewcommand{\ge}{\ensuremath{\geqslant}}
+\renewcommand{\geq}{\ensuremath{\geqslant}}
+
+\usepackage[useregional]{datetime2}
+
+% exam
+\pointsinrightmargin
+\marginpointname{ б.}
+
+% custom maketitle
+\usepackage{titling}
+\setlength{\droptitle}{-4em}
+\posttitle{\end{center}\vspace{-4em}}
+
+\title{{\Large Теория фигур планет и гравиметрия 2018}\\ 
+    {\bf\Large Домашнее задание № 1}}
+\author{}
+\DTMsavedate{lessondate}{2018-02-11}
+\DTMsavedate{deadline}{2018-02-25}
+
+\date{\normalsize\bf Крайний срок сдачи: \DTMusedate{deadline}}
+
+\begin{document}
+\maketitle
+\thispagestyle{empty}
+\begin{questions}
+    \question[1] Ответьте на вопросы.
+    \begin{parts}
+        \part Какой диапазон изменения высот физической поверхности Земли и глубин дна Мирового
+        океана? Где находятся максимум и минимум?
+        \part Как относятся эти величины (диапазон, минимум и максимум) к среднему радиусу Земли? Выразите численно.
+        \part Вы стоите во дворе университета. Назовите как минимум три любых независимых способа
+        определения своего местоположения (можно пользоваться любыми средствами и инструментами). В
+        какой системе координат будет результат и с какой точностью (примерно)?
+        \part Как по--русски называются эти буквы греческого алфавита:\\
+        $\alpha$, $\beta$, $\gamma$, $\delta\Delta$, $\zeta$, $\eta$, $\theta$, $\lambda\Lambda$, 
+        $\mu$, $\nu$, $\xi$, $\pi$, $\rho$, $\phi$, $\chi$, $\psi$, $\omega$?
+    \end{parts}
+    \question[1] Постройте график зависимости геоцентрической широты и приведённой широты
+    от геодезической широты, если последняя изменятеся от $-90^\circ$ до $90^\circ$ на
+    поверхности эллипсоида. Найдите максимум и минимумы этих разностей. За исходные принять параметры общеземного эллипсоида ГСК--2011 
+    ($a = 6378136,5\ \text{м}$, $\alpha~=~1/298,2564151$).
+
+    \question[1] Высота Эвереста (Гималаи) 8848 м над уровнем моря ($B = 28^\circ, L = 87^\circ$), 
+    высота вулкана Чимборасо (Анды) 6267 м ($B = -1,5^\circ, L = -79^\circ$). Чья вершина находится дальше от
+    центра масс Земли? 
+    Сделайте необходимые расчёты, приняв за исходные параметры общеземного эллипсоида из предыдущей
+    задачи. Различиями в системах высот пренебречь. Объясните полученный результат.
+    \question[2] Составьте (или найдите) для себя таблицу простейших производных и интегралов (первообразных). Вспомните основные
+    правила дифференцирования и интегрирования. Решите примеры.
+    \begin{parts}
+        \part Найти производную функций ($a$ и $n$ -- числа)
+        \begin{subparts}
+            \subpart $y = x + \sqrt{x} + \sqrt[3]{x}$,
+            \subpart $y = \dfrac{1}{x} + \dfrac{1}{\sqrt{x}} + \dfrac{1}{\sqrt[3]{x}}$,
+            \subpart $y = \sin^n{x}\cdot\cos{nx}$,
+            \subpart $y = \ln\tg{\dfrac{x}{2}}$,
+            \subpart $y = \dfrac{a}{x^n}$, найти $y'''$.
+        \end{subparts}
+        \part Найти все частные производные первого и второго порядков для функции
+        $f\left( x, y \right) = \dfrac{x}{y}$.
+        \part Разложить в ряд Тейлора функцию из предыдущего примера в окрестности точки $M(1, 1)$.
+        \part Найти интегралы
+        \begin{subparts}
+            \subpart $\int\left( \dfrac{a}{x} + \dfrac{a^2}{x^2} + \dfrac{a^3}{x^3} \right)\dif x$,
+            \subpart $\int\left( e^{3x} + 2\sin{2x} \right)\dif x$,
+            \subpart $\int\limits_{0}^{1}\sqrt{x^3}\dif x$.
+        \end{subparts}
+    \end{parts}
+\end{questions}
+%\printbibliography
+\end{document}
