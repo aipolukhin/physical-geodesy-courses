@@ -1,4 +1,4 @@
-\documentclass[11pt, a4paper]{article}
+\documentclass[11pt, a4paper]{exam}
 
 % Languages and fonts
 \usepackage{cmap} 
@@ -32,30 +32,22 @@
 % Theorems
 \renewcommand{\proofname}{Доказательство}
 
-\theoremstyle{plain}
+%\theoremstyle{plain}
 \newtheorem{theorem}{Теорема}[section]
 
-\theoremstyle{definition}
+%\theoremstyle{definition}
 \newtheorem{definition}{Определение}
 \newtheorem{corollary}{Следствие}[theorem]
-\newtheorem{problem}{Задача}[section]
 
 \theoremstyle{remark}
 \newtheorem{remark}{Замечание}
-\newtheorem*{solution}{Решение}
 
 \usepackage[top=20mm,bottom=20mm,left=20mm,right=20mm]{geometry}
 
-\usepackage{lastpage} % how many pages
-
 \usepackage{soul}
-
-\usepackage{framed} % easy frames
 \usepackage{enumerate} % better numbered lists
-
 \usepackage{hyperref}
 \usepackage{xcolor}
-
 \usepackage{tikz} % drawing
 
 \usepackage{csquotes}
@@ -73,17 +65,22 @@
 
 \usepackage[useregional]{datetime2}
 
+% exam
+\pointsinrightmargin
+\marginpointname{ б.}
+
 % custom maketitle
 \usepackage{titling}
 \setlength{\droptitle}{-4em}
-\posttitle{\end{center}\vspace{-3em}}
+\posttitle{\end{center}\vspace{-4em}}
 
-\title{{\Large Название курса}\\ 
-    {\bf\Large Практическое занятие № 1} \\
-{\Large Тема занятия}}
+\title{{\Large Теория фигур планет и гравиметрия 2018}\\ 
+    {\bf\Large Домашнее задание № 1}}
 \author{}
-\DTMsavedate{lessondate}{2018-02-09}
-\date{\DTMusedate{lessondate}}
+\DTMsavedate{lessondate}{2018-02-11}
+\DTMsavedate{deadline}{2018-02-25}
+
+\date{\normalsize\bf Крайний срок сдачи: \DTMusedate{deadline}}
 
 \begin{document}
 \maketitle
