@@ -88,7 +88,8 @@
 \begin{document}
 \maketitle
 
-\section{Закон всемирного тяготения Ньютона}
+\section{Закон всемирного притяжения}
+
 Закон гравитационного притяжения был сформулирован Ньютоном и опубликован в Математических началах
 натуральной философии\cite{Newton1687}(лат. Philosophiae Naturalis Principia Mathematica) в 1687
 году.
@@ -128,7 +129,7 @@
 В дальнейшем, мы не будем различать эти две величины в силу эквивалентности
 инерциальной и гравитационной массы.
 
-Единица ускорения в системе СИ --- $\text{м/c}^2$. В геодезической гравиметрии, однако, мы будем
+Единица ускорения в системе СИ --- $\text{м/c}^2$. В гравиметрии, однако, мы будем
 использовать внесистемную единицу --- Гал, названную в честь Галилео Галилея, который определяется
 следующим образом:
 \begin{align*}
@@ -138,7 +139,7 @@
 \end{align*}
 
 \begin{problem}
-    \textbf{Велика ли сила притяжения?}
+    Оцените, с какой силой притягиваются друг к другу два человека?
 \end{problem}
 
 Произведение гравитационной постоянной $G$ на массу притягивающего объекта $M$ называется
@@ -149,6 +150,15 @@
 \end{equation*}
 со стандартной неопределенностью $8\times10^{5}\,\text{м}^3\text{с}^{-2}$. Это означает, что
 геоцентрическая гравитационная постоянная определена точнее, чем гравитационная постоянная. 
+
+\begin{table}[h]
+    \centering
+    \begin{tabular}{c}
+    \end{tabular}
+    \caption{Гравитационные параметры}
+    \label{tab:stdgravparam}
+\end{table}
+
 \begin{problem}
     Найдите массу Земли по известной гравитационной постоянной $G$ и геоцентрической гравитационной
     постоянной $GM$. Оцените точность.
@@ -159,6 +169,56 @@
     Средний радиус Земли $R = 6371\,\text{км}$. Найдите притяжение, создаваемое Землёй
     на её поверхности, предполагая, что вся её масса сосредоточена в центре.
 \end{problem}
+
+\begin{equation*}
+    \vv{F} = Gm\dfrac{\vv{r}}{r^3}
+\end{equation*}
+
+\begin{equation*}
+    \left| \vv{r}\right| = r = \sqrt{\left( x_2 - x_1 \right)^2 +
+    \left( y_2 - y_1 \right)^2 + \left( z_2 - z_1 \right)^2}
+\end{equation*}
+
+\begin{align*}
+    & F_x = F\cos{(\vv{F}, x)} \\
+    & F_y = F\cos{(\vv{F}, y)} \\
+    & F_z = F\cos{(\vv{F}, z)} 
+\end{align*}
+
+\begin{align*}
+    & \cos{(\vv{F}, x)} = -\cos{(\vv{r}, x)} = \pd{r}{x} = \dfrac{x_2 - x_1}{r} \\
+    & \cos{(\vv{F}, y)} = -\cos{(\vv{r}, y)} = \pd{r}{y} = \dfrac{y_2 - y_1}{r} \\
+    & \cos{(\vv{F}, z)} = -\cos{(\vv{r}, z)} = \pd{r}{z} = \dfrac{z_2 - z_1}{r} 
+\end{align*}
+
+\begin{align*}
+    & F_x = -Gm \dfrac{x_2 - x_1}{r^3} \\
+    & F_y = -Gm \dfrac{y_2 - y_1}{r^3} \\
+    & F_z = -Gm \dfrac{z_2 - z_1}{r^3} \\
+\end{align*}
+
+\begin{equation*}
+    V = \dfrac{GM}{r}
+\end{equation*}
+
+\begin{align*}
+    & \dpd{V}{x} = -Gm \dfrac{x_2 - x_1}{r^3} = F_x \\
+    & \dpd{V}{x} = -Gm \dfrac{y_2 - y_1}{r^3} = F_y\\
+    & \dpd{V}{x} = -Gm \dfrac{z_2 - z_1}{r^3} = F_z
+\end{align*}
+
+\begin{definition}
+    Потенциал
+\end{definition}
+
+\begin{equation*}
+    V \left( x, y, z \right) = C
+\end{equation*}
+
+\begin{equation*}
+    R = \sqrt{\dfrac{GM}{C}}
+\end{equation*}
+
 
 \printbibliography
 \end{document}
