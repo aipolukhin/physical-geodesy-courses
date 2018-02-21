@@ -1,0 +1,128 @@
+\documentclass[11pt, a4paper,addpoints]{exam}
+
+% Languages and fonts
+\usepackage{cmap} 
+\usepackage[T2A]{fontenc}
+\usepackage[utf8]{inputenc} 
+\usepackage[english, russian]{babel}
+\usepackage{microtype}
+\usepackage{indentfirst}
+\frenchspacing
+
+% Mathematics
+\usepackage{amsmath, amssymb, amsfonts, amsthm, mathtools, fixmath}
+\mathtoolsset{showonlyrefs=true}
+\usepackage{esint, esvect} % integrals and vectors
+\usepackage{systeme} % equation system
+\usepackage{commath} % partials and differentials
+\usepackage{icomma} % smart comma ($0,2$ is a number)
+\usepackage{mathabx}% astronomy
+
+% Floats
+\usepackage{float}
+
+% Tables
+\usepackage{array,tabularx,tabulary,booktabs} % better tables
+\usepackage{longtable}
+\usepackage{multirow}
+
+% Graphics
+\usepackage[pdftex]{graphicx}
+\usepackage{wrapfig}
+
+% Theorems
+\renewcommand{\proofname}{Доказательство}
+
+%\theoremstyle{plain}
+\newtheorem{theorem}{Теорема}[section]
+
+%\theoremstyle{definition}
+\newtheorem{definition}{Определение}
+\newtheorem{corollary}{Следствие}[theorem]
+
+\theoremstyle{remark}
+\newtheorem{remark}{Замечание}
+
+\usepackage[top=20mm,bottom=20mm,left=20mm,right=20mm]{geometry}
+
+\usepackage{soul}
+\usepackage{enumerate} % better numbered lists
+\usepackage{hyperref}
+\usepackage{xcolor}
+\usepackage{tikz} % drawing
+
+%\usepackage{csquotes}
+%\usepackage[style=authoryear,maxcitenames=2,backend=biber,sorting=nty]{biblatex}
+%\bibliography{}
+
+\renewcommand{\epsilon}{\ensuremath{\varepsilon}}
+\renewcommand{\phi}{\ensuremath{\varphi}}
+\renewcommand{\theta}{\vartheta}
+\renewcommand{\kappa}{\ensuremath{\varkappa}}
+\renewcommand{\le}{\ensuremath{\leqslant}}
+\renewcommand{\leq}{\ensuremath{\leqslant}}
+\renewcommand{\ge}{\ensuremath{\geqslant}}
+\renewcommand{\geq}{\ensuremath{\geqslant}}
+
+\usepackage[useregional]{datetime2}
+
+% exam
+\pointsinrightmargin
+\marginpointname{ б.}
+
+% custom maketitle
+\usepackage{titling}
+\setlength{\droptitle}{-4em}
+\posttitle{\end{center}\vspace{-4em}}
+
+\title{{\Large Геодезическая гравиметрия 2018}\\ 
+    {\bf\Large Домашнее задание № 2}}
+\author{}
+\DTMsavedate{deadline}{2018-03-08}
+
+\date{\normalsize\bf Крайний срок сдачи: \DTMusedate{deadline}}
+
+\begin{document}
+\maketitle
+\thispagestyle{empty}
+\begin{questions}
+    \question[1] В каких единицах выражаются работа и потенциал?
+    \question[2] Известный французский писатель Жуль Верн в 1865 году в романе <<С Земли на Луну>> поставил
+    следующий вопрос: какова должна быть начальная скорость запущенного с
+    поверхности Земли пушечного ядра для того, чтобы оно долетело до Луны? Легко догадаться, что
+    для достижения цели необходимо, чтобы пущенное с искомой начальной скоростью ядро
+    достигло такой точки, в которой
+    сила притяжения Луны будет больше силы притяжения Земли. 
+    На каком расстоянии от поверхности Земли расположена такая <<точка невозврата>>, после
+    пересечения которой ядро не вернётся на Землю? Массы Земли и Луны считать сосредоточенными в их
+    центрах, а сами два небесных тела --- неподвижными. Поверхность Земли --- сфера.\\
+    Исходные данные:
+    \begin{align*}
+        &GM_\Earth = 3,9860\times10^{14}\ \textrm{м$^3$с$^{-2}$ -- геоцентрическая гравитационная постоянная}, \\
+        &GM_\Moon = 4,9049\times10^{12}\ \textrm{м$^3$с$^{-2}$ -- селеноцентрическая гравитационная постоянная}, \\
+        &R_\Earth = 6371\times10^3\ \textrm{м -- средний радиус Земли}, \\
+        &R = 3844\times10^5\ \textrm{м -- расстояния между центрами Земли и Луны}.
+    \end{align*}
+    \question[2] Две точечные массы $m_1 = m_2 = m$ расположены в плоскости $xy$ на расстоянии $d$ друг от друга.
+    Притягиваемая единичная масса рсположена в вершине равностороннего треугольника с основанием $d$
+    (т.\,е. $m_1$ и $m_2$ --- две другие вершины, а высота $z = \frac{\sqrt{3}}{2}d$). 
+    \begin{parts}
+        \part Написать выражение для потенциала
+    притяжения $V$ поля двух точечных масс. 
+        \part Написать выражения для составляющих результирующей силы 
+    притяжения $F_x, F_y, F_z$. 
+        \part Вычислить значение силы притяжения $F$. Куда она направлена?\\
+    \end{parts}
+    Исходные данные ($i$ --- вариант): $m = 100\times i\,\text{кг}$, $d = 10\times i\,\text{м}$.
+    \question[2] Пользуясь условием и результатами предыдущей задачи, написать уравнение уровенных
+    поверхностей поля двух точечных масс. Построить в плоскости $xy$ след уровенной поверхности,
+        на которой потенциал равен $C$. Рассмотреть несколько случаев, когда $C \leq \dfrac{4Gm}{d}$.
+        \paragraph{Подсказка.} Следом поверхности в плоскости называется двухмерная кривая, образованная в
+        результате
+        пересечения поверхности этой плоскостью. Следы в плоскостях, параллельных $xy$ могут быть
+        заданы через уравнение $z = f\left( x, y \right) = C$, где $C$ --- постоянная.
+        Горизонтали на топографической карте являются следом рельефа.
+        Таким образом, изолинии изображают проекцию следа на плоскость $z=0$.
+\end{questions}
+%\printbibliography
+\end{document}
