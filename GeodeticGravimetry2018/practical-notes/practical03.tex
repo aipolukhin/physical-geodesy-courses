@@ -1,0 +1,283 @@
+\documentclass[11pt, a4paper]{article}
+
+% Languages and fonts
+\usepackage{cmap} 
+\usepackage[T2A]{fontenc}
+\usepackage[utf8]{inputenc} 
+\usepackage[english, russian]{babel}
+\usepackage{microtype}
+\usepackage{indentfirst}
+\frenchspacing
+
+% Mathematics
+\usepackage{amsmath, amssymb, amsfonts, amsthm, mathtools, fixmath}
+\mathtoolsset{showonlyrefs=true}
+\usepackage{esint, esvect} % integrals and vectors
+\usepackage{systeme} % equation system
+\usepackage{commath} % partials and differentials
+\usepackage{icomma} % smart comma ($0,2$ is a number)
+
+% Floats
+\usepackage{float}
+
+% Tables
+\usepackage{array,tabularx,tabulary,booktabs} % better tables
+\usepackage{longtable}
+\usepackage{multirow}
+
+% Graphics
+\usepackage[pdftex]{graphicx}
+\usepackage{wrapfig}
+
+% Theorems
+\renewcommand{\proofname}{Доказательство}
+
+\theoremstyle{plain}
+\newtheorem{theorem}{Теорема}[section]
+
+\theoremstyle{definition}
+\newtheorem{definition}{Определение}
+\newtheorem{corollary}{Следствие}[theorem]
+\newtheorem{problem}{Задача}[section]
+
+\theoremstyle{remark}
+\newtheorem{remark}{Замечание}
+\newtheorem*{solution}{Решение}
+
+\usepackage[top=20mm,bottom=20mm,left=20mm,right=20mm]{geometry}
+
+\usepackage{lastpage} % how many pages
+
+\usepackage{soul}
+
+\usepackage{framed} % easy frames
+\usepackage{enumerate} % better numbered lists
+
+\usepackage{hyperref}
+\usepackage{xcolor}
+
+\usepackage{tikz} % drawing
+
+\usepackage{csquotes}
+\usepackage[style=numeric,backend=biber,sorting=none]{biblatex}
+\addbibresource{../../bibliography.bib}
+
+\renewcommand{\epsilon}{\ensuremath{\varepsilon}}
+\renewcommand{\phi}{\ensuremath{\varphi}}
+%\renewcommand{\theta}{\vartheta}
+\renewcommand{\kappa}{\ensuremath{\varkappa}}
+\renewcommand{\le}{\ensuremath{\leqslant}}
+\renewcommand{\leq}{\ensuremath{\leqslant}}
+\renewcommand{\ge}{\ensuremath{\geqslant}}
+\renewcommand{\geq}{\ensuremath{\geqslant}}
+
+\usepackage[useregional]{datetime2}
+
+% custom maketitle
+\usepackage{titling}
+\setlength{\droptitle}{-4em}
+\posttitle{\end{center}\vspace{-3em}}
+
+\title{{\Large Геодезическая гравиметрия 2018}\\ 
+    {\bf\Large Практическое занятие № 3} \\
+{\Large Притяжение тел простой формы I}}
+\author{}
+\DTMsavedate{lessondate}{2018-02-27}
+\date{\DTMusedate{lessondate}}
+
+\begin{document}
+\maketitle
+
+\section{Притяжение простого слоя}
+
+Потенциал объемного тела может быть представлен в виде потенциалов простого слоя, двойного слоя или
+их комбинации. Это полезное свойство, которое часто используется в геодезической гравиметрии при
+решении теоретических задач. Такая замена позволяет перейти от интегрирования по объёму к
+интегрированию по поверхности (то есть от тройного интеграла к двойному). Рассмотрим потенциал
+простого слоя.
+
+Пусть в объеме $\tau$, заключенном между двумя очень близкими, поверхностями $\sigma$ и $\sigma'$
+находится притягивающая масса с переменной объёмной плотностью $\delta$, тогда потенциал объёмных
+масс будет равен
+\begin{equation*}
+    V = G\iiint\limits_{\tau}\dfrac{\delta\dif\tau}{r},
+\end{equation*}
+где интегрирование ведётся по всему объёму $\tau$, а $r$ --- расстояние от текущей 
+точки до притягиваемой $P$.
+
+\textbf{Элементарный объём}
+\begin{equation*}
+    \dif\tau = \dif h\dif\sigma,
+\end{equation*}
+где $dh$ --- кратчайшее расстояние между $\sigma$ и $\sigma'$,
+$\dif\sigma$ --- элемент площади поверхности. \\
+
+\textbf{Элементарная масса}
+\begin{equation*}
+    \dif m = \delta\dif\tau = \delta\dif h\dif\sigma.
+\end{equation*}
+
+Пусть $\sigma$ и $\sigma'$ неограниченно приближаются друг к другу, тогда вся элементарная масса
+$\dif m$ элементарного объёма $\dif\tau$ будет сконденсирована на бесконечно тонком слое площадью
+$\dif\sigma$. Такой слой называется простым слоем, а его поверхностная плотность (или плотность
+простого слоя) равна
+\begin{equation*}
+    \mu = \dfrac{\dif m }{\dif \sigma},
+\end{equation*}
+откуда
+\begin{equation*}
+    \dif m = \delta\dif\tau = \delta\dif h\dif\sigma = \mu\dif\sigma. 
+\end{equation*}
+Элементарный потенциал, создаваемый массой $\dif m$ будет равен
+\begin{equation*}
+    \dif V = G\dfrac{\mu\dif\sigma}{r},
+\end{equation*}
+откуда, интегрируя по поверхности $\sigma$, получаем потенциал притяжения простого слоя
+\begin{equation*}
+    V = G\iint\limits_{\sigma}\dfrac{\mu\dif\sigma}{r}.
+\end{equation*}
+
+\section{Притяжение однородной сферы (сферического слоя)}
+Пусть простой слой постоянной плотности $\mu$ распределён на сфере радиуса $R$. Найдём притяжение
+такой однородной сферы в точке $P$, находящейся на расстоянии $\rho$ от центра сферы
+$O$. $r$ -- переменное расстояние от элементарной площади $\dif\sigma$ поверхности сферы до точки
+$P$. 
+
+Воспользуемся сферической системой координат ($\theta$, $\lambda$). Пусть элемент $\dif\sigma$
+представляет собой криволинейную трапецию, ограниченную меридианами $\lambda$, $\lambda +
+\dif\lambda$ и параллелями $\theta$, $\theta + \dif\theta$. Тогда стороны трапеции будут равны
+\begin{align*}
+    &\dif\theta = R\dif\theta\ \text{---длина дуги меридиана}, \\
+    &\dif\lambda = R\sin\theta\dif\lambda\ \text{---длина дуги параллели},
+\end{align*}
+откуда элементарная площадь
+\begin{equation*}
+    \dif\sigma = \dif\theta\dif\lambda = R^2\sin\theta\dif\theta\dif\lambda.
+\end{equation*}
+По теореме косинусов
+\begin{equation}
+    \label{eq:thcos}
+    r^2 = R^2 + \rho^2 - 2R\rho\cos\theta.
+\end{equation}
+Тогда для простого слоя, распределённого на поверхности сферы, можно записать
+\begin{align*}
+    V  =  
+    G\mu\int\limits_{0}^{\pi}\int\limits_{0}^{2\pi}
+    \dfrac{R^2\sin\theta\dif\theta\dif\lambda}{\sqrt{R^2 + \rho^2 - 2R\rho\cos\theta}} 
+    & =
+    G\mu R^2\int\limits_{0}^{\pi}
+    \dfrac{\sin\theta\dif\theta}{\sqrt{R^2 + \rho^2 - 2R\rho\cos\theta}}
+    \int\limits_{0}^{2\pi}\dif\lambda = \\
+    & =  2\pi G\mu R^2\int\limits_{0}^{\pi}
+    \dfrac{\sin\theta\dif\theta}{\sqrt{R^2 + \rho^2 - 2R\rho\cos\theta}}.
+\end{align*}
+Выполним замену переменных. Дифференцируя $r^2 = R^2 + \rho^2 - 2R\rho\cos\theta$, 
+получаем
+\begin{equation*}
+    r\dif r = R\rho\sin\theta\dif\theta,\quad \sin\theta\dif\theta = \dfrac{r\dif r}{R\rho},
+\end{equation*}
+тогда
+\begin{equation*}
+    V =  2\pi G\mu R^2\int\limits_{0}^{\pi}
+    \dfrac{\sin\theta\dif\theta}{\sqrt{R^2 + \rho^2 - 2R\rho\cos\theta}} =
+    2\pi G\mu \dfrac{R}{\rho}\int\limits_{r_1}^{r_2}
+    \dif r.
+\end{equation*}
+Если точка $P$ --- внешняя, то $r_1 = R + \rho$, $r_2 = - R + \rho$, тогда
+\begin{equation*}
+    V_e =
+    2\pi G\mu \dfrac{R}{\rho}\int\limits_{\rho - R}^{\rho + R} \dif r =
+    2\pi G\mu \dfrac{R}{\rho}\left[ \left( \rho + R \right) - \left( \rho - R \right) \right] =
+    \underline{4\pi G\mu \dfrac{R^2}{\rho}}.
+\end{equation*}
+Поскольку масса всего сферического слоя равна $M = 4\pi R^2\mu$, то окончательно получаем
+\begin{equation*}
+    V_e = \dfrac{GM}{\rho}.
+\end{equation*}
+Если точка $P$ --- внутренняя, то $r_1 = R - \rho$, $r_2 = R + \rho$, тогда
+\begin{equation*}
+    V_i =
+    2\pi G\mu \dfrac{R}{\rho}\int\limits_{R - \rho}^{R + \rho} \dif r =
+    2\pi G\mu \dfrac{R}{\rho}\left[ \left( R + \rho \right) - \left( R - \rho \right) \right] =
+    \underline{4\pi G\mu R = const}.
+\end{equation*}
+На поверхности сферы $\rho\to R$, поэтому $V_0 = V_e = V_i$.
+
+Поскольку потенциал притяжения зависит только от расстояния от притягивающей точки до центра сферы,
+то для нахождения силы для внешней точки достаточно вычислить радиальную производную
+\begin{equation*}
+    |\vv{F_e}| = F_\rho = -\pd{V}{\rho} = 4\pi G\mu \dfrac{R^2}{\rho^2} = \dfrac{GM}{\rho^2}.
+\end{equation*}
+Для внутренней точки 
+\begin{equation*}
+    |\vv{F_i}| = F_\rho = -\pd{V}{\rho} = 0.
+\end{equation*}
+Пусть притягиваемая точка $P$ приближается к поверхности сферы $P_0$ с внутренней и с внешней
+стороны, но не пересекает её, тогда
+\begin{align*}
+    &F_{e0} = \lim_{\rho\to R} -\dpd{V}{\rho} = -4\pi G\mu, \\
+    &F_{i0} = \lim_{\rho\to R} \dpd{V}{\rho} = 0.
+\end{align*}
+
+Прямое значение силы на самом слое равно среднему из предельных значений, то есть
+\begin{equation*}
+    F_0 = -2\pi G\mu.
+\end{equation*}
+
+\begin{problem}
+    Как ведут себя потенциал и сила притяжения сферы, если притягиваемая точка премещается из центра
+    сферы в бесконечность?
+    Постройте графики зависимости потенциала и силы притяжения сферы от расстояния.
+\end{problem}
+
+\section{Притяжение шара}
+Однородный шар с объёмной плотностью $\delta$ можно представить состоящим из бесконечного числа
+сферических слоёв. Пусть $R$ --- радиус шара,
+$R'$ --- радиус сферического слоя толщиной $\dif R'$. Тогда для внешней точки шара $P$ элементарный
+потенциал притяжения сферического слоя равен
+\begin{equation*}
+    \dif V_e = 4\pi G\delta\dfrac{{R'}^2}{\rho}\dif R',
+\end{equation*}
+окуда, интегрируя по всему радиусу, получаем
+\begin{equation*}
+    V_e = 4\pi G\delta \int\limits_{0}^{R}\dfrac{{R'}^2}{\rho}\dif R' = 
+    \dfrac{4}{3}\pi G\delta\dfrac{R^3}{\rho}.
+\end{equation*}
+Вводя массу шара $M = 4/3\ \pi R^3 \delta$, снова получаем
+\begin{equation*}
+    V_e = \dfrac{GM}{\rho}.
+\end{equation*}
+Аналогично для силы
+\begin{equation*}
+    |\vv{F_e}| = F_\rho = -\pd{V}{\rho} = \dfrac{4}{3}\pi G\delta \dfrac{R^3}{\rho^2} = 
+    \dfrac{GM}{\rho^2}.
+\end{equation*}
+
+Для внутренней точки воспользуемся свойством суперпозиции и будем искать потенциал, как сумму
+\begin{equation*}
+    V_i = V_1 + V_2,
+\end{equation*}
+где $V_1$ --- потенциал <<внутреннего>> шара радиуса $\rho$, $V_2$ --- потенциал внешнего шарового
+слоя, заключенного между $\rho$ и $R$. Потенциал $V_1$ ничем не отличается от потенциала шара на
+внешнюю точку, поэтому
+\begin{equation*}
+    V_1 = \dfrac{4}{3}\pi G\delta\rho^2.
+\end{equation*}
+Представим шаровой слой состоящим из бесконечного числа сферических слоёв переменного радиуса $R'$.
+Точка $P$ будет внутренней для них, а потому элементарный потенциал равен
+\begin{equation*}
+    \dif V = 4\pi G\delta R'\dif R'.
+\end{equation*}
+Для всего шарового слоя получаем
+\begin{equation*}
+    V = 4\pi G\delta \int\limits_{\rho}^{R} R'\dif R' = 2\pi G\delta \left( R^2 - \rho^2 \right).
+\end{equation*}
+Наконец,
+\begin{equation*}
+    V_i = V_1 + V_2 = \dfrac{2}{3}\pi G\delta \left( 3R^2 - \rho^2 \right).
+\end{equation*}
+
+\section{Притяжение шарового слоя}
+
+%\printbibliography
+\end{document}
