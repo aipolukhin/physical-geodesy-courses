@@ -1,0 +1,335 @@
+\documentclass[11pt, a4paper]{article}
+
+% Languages and fonts
+\usepackage{cmap} 
+\usepackage[T2A]{fontenc}
+\usepackage[utf8]{inputenc} 
+\usepackage[english, russian]{babel}
+\usepackage{microtype}
+\usepackage{indentfirst}
+\frenchspacing
+
+% Mathematics
+\usepackage{amsmath, amssymb, amsfonts, amsthm, mathtools, fixmath}
+\mathtoolsset{showonlyrefs=true}
+\usepackage{esint, esvect} % integrals and vectors
+\usepackage{systeme} % equation system
+\usepackage{commath} % partials and differentials
+\usepackage{icomma} % smart comma ($0,2$ is a number)
+
+% Floats
+\usepackage{float}
+
+% Tables
+\usepackage{array,tabularx,tabulary,booktabs} % better tables
+\usepackage{longtable}
+\usepackage{multirow}
+
+% Graphics
+\usepackage[pdftex]{graphicx}
+\usepackage{wrapfig}
+
+% Theorems
+\renewcommand{\proofname}{Доказательство}
+
+\theoremstyle{plain}
+\newtheorem{theorem}{Теорема}[section]
+
+\theoremstyle{definition}
+\newtheorem{definition}{Определение}
+\newtheorem{corollary}{Следствие}[theorem]
+\newtheorem{problem}{Задача}[section]
+
+\theoremstyle{remark}
+\newtheorem{remark}{Замечание}
+\newtheorem*{solution}{Решение}
+
+\usepackage[top=20mm,bottom=20mm,left=20mm,right=20mm]{geometry}
+
+\usepackage{lastpage} % how many pages
+
+\usepackage{soul}
+
+\usepackage{framed} % easy frames
+\usepackage{enumerate} % better numbered lists
+
+\usepackage{hyperref}
+\usepackage{xcolor}
+
+\usepackage{tikz} % drawing
+
+\usepackage{csquotes}
+\usepackage[style=numeric,backend=biber,sorting=none]{biblatex}
+\addbibresource{../../bibliography.bib}
+
+\renewcommand{\epsilon}{\ensuremath{\varepsilon}}
+\renewcommand{\phi}{\ensuremath{\varphi}}
+%\renewcommand{\theta}{\vartheta}
+\renewcommand{\kappa}{\ensuremath{\varkappa}}
+\renewcommand{\le}{\ensuremath{\leqslant}}
+\renewcommand{\leq}{\ensuremath{\leqslant}}
+\renewcommand{\ge}{\ensuremath{\geqslant}}
+\renewcommand{\geq}{\ensuremath{\geqslant}}
+
+\usepackage[useregional]{datetime2}
+
+% custom maketitle
+\usepackage{titling}
+\setlength{\droptitle}{-4em}
+\posttitle{\end{center}\vspace{-3em}}
+
+\title{{\Large Геодезическая гравиметрия 2018}\\ 
+    {\bf\Large Практическое занятие № 4} \\
+{\Large Притяжение тел простой формы II}}
+\author{}
+\DTMsavedate{lessondate}{2018-03-06}
+\date{\DTMusedate{lessondate}}
+
+\begin{document}
+\maketitle
+
+\section{Притяжение тел простой формы}
+\subsection{Притяжение диска}
+
+Силу притяжение бесконечно тонкого однородного диска радиуса $a$ можно представить
+через притяжение простого слоя $V = G\int\limits_{\sigma}\frac{\mu\dif\sigma}{r}$.
+Удобно воспользоваться цилиндрической системой координат ($\rho$, $\alpha$, $z$), где $\rho$ ---
+полярный радиус, $\alpha$ --- полярный угол, $z$ --- аппликата точки. Таким образом, цилиндрическая
+система координат является расширением полярной (плоской) системы координат.
+
+Найдем силу притяжения диска для точки, лежащей на его оси симметрии. Можно записать
+\begin{equation*}
+    F = \dpd{V}{z} = - G\mu\int\limits_{\sigma}\dfrac{\dif\sigma}{r^2}\cos\left( r, z \right),
+\end{equation*}
+\begin{equation*}
+    \dif\sigma = \rho\dif\alpha\dif\rho,
+\end{equation*}
+откуда
+\begin{equation*}
+    F = \dpd{V}{z} = - G\mu\int\limits_{\sigma}\dfrac{\rho\dif\rho\dif\alpha}{r^2}\cos\left( r, z \right).
+\end{equation*}
+Заметим, что
+\begin{equation*}
+    r^2 = \rho^2 + z^2,\qquad r\dif r = \rho\dif rho,\qquad \cos\left( r, z \right) = \dfrac{z}{r},
+\end{equation*}
+тогда
+\begin{equation*}
+    F_e = - G\mu\int\limits_{z}^{\sqrt{z^2 + a^2}}\int\limits_{0}^{2\pi}\dfrac{r\dif
+    r\dif\alpha}{r^3} = -2\pi G\mu z\int\limits_{z}^{\sqrt{z^2 + a^2}}\dfrac{\dif z}{r^2} =
+    -2\pi G\mu\left[ 1 - \dfrac{z}{\sqrt{z^2 + a^2}}\right].
+\end{equation*}
+Если $z < 0$, то $F_e = +2\pi G\mu\left[ 1 - \dfrac{z}{\sqrt{z^2 + a^2}}\right]$. \\
+Теперь найдём значение силы на самом слое
+\begin{equation*}
+    \lim\limits_{z\to 0} F_e = \pm2\pi G\mu\lim\limits_{z\to 0} \left[ 1 - \dfrac{z}{\sqrt{z^2 +
+    a^2}}\right] = \pm2\pi G\mu = const.
+\end{equation*}
+Прямое значение на слое, равное среднему из двух пределов, $F_0 = 0$, что можно было бы получить и
+чисто опираясь на физический смысл силы. Таким образом, сила притяжение
+терпит разрыв на величину $4\pi G\mu$ при переходе через слой.
+
+\subsection{Притяжение плоскости}
+Силу притяжения плоскости получим из силы притяжения диска, радиус которого стремится к
+бесконечности
+\begin{equation*}
+    F = \pm2\pi G\mu\lim\limits_{a\to\infty} \left[ 1 - \dfrac{z}{\sqrt{z^2 + a^2}}\right] =
+    \pm2\pi G\mu = const,
+\end{equation*}
+откуда следует, что сила притяжения плоскости не зависит от расстояния до неё.
+
+\subsection{Притяжение цилиндра}
+Будем рассматривать притяжение точки, находящейся на оси однородного цилиндра высотой $H$ и радиуса $a$. Для
+простоты и приложений будем считать, что точка находится на верхней плоскости его основания ($z = H$).
+Элементарная сила бесконечно тонкого диска будет равна
+\begin{equation*}
+    \dif F_z = -2\pi G\delta\left[ 1 - \dfrac{z}{\sqrt{z^2 + a^2}}\right] \dif z,
+\end{equation*}
+тогда для всего цилиндра
+\begin{equation*}
+    F_H = -2\pi G\delta\int\limits_{0}^{H}\left[ 1 - \dfrac{z}{\sqrt{z^2 + a^2}}\right] \dif z =
+    -2\pi G\delta \left[ z - \sqrt{a^2 + z^2} \right] \bigg|_0^{H} =
+    -2\pi G\delta\left( H - \sqrt{a^2 + H^2} + a \right).
+\end{equation*}
+Если $a >> H$, то можно представить (ряд Тейлора)
+\begin{equation*}
+    \sqrt{a^2 + H^2} = a\sqrt{1 + \dfrac{H^2}{a^2}} \approx
+    a+\dfrac{H^2}{2a}-\dfrac{H^4}{8a^3}+\dots,
+\end{equation*}
+тогда
+\begin{equation*}
+    F_H = 
+    -2\pi G\delta H\left( 1 - \dfrac{H}{2a} + \dots \right).
+\end{equation*}
+
+\subsection{Притяжение плоскопараллельного слоя}
+Силу притяжения плоскопараллельного (то есть заключенного между двумя плоскостями) слоя толщиной $H$
+получим из силы притяжения цилиндра, радиус которого стремится к бесконечности
+\begin{equation*}
+    F = 
+    -2\pi G\delta H\lim\limits_{a\to\infty}\left( 1 - \dfrac{H}{2a} + \dots \right) = 
+    -2\pi G\delta H = const.
+\end{equation*}
+Таким образом, сила притяжения плоскопараллельного слоя является величиной
+постоянной. 
+
+Редукция (поправка), вводимая в измеренные значения силы тяжести и вычисляемая по формуле $-2\pi
+G\delta H$ называется редукцией Буге. Так может быть учтено притяжение топографических масс, снега,
+грунтовых вод и т.д. То есть в тех случаях, когда высота притягивающих масс много меньше их радиуса.
+Плотность $\delta$, конечно, будет меняться.
+
+Поле, создаваемое плоскостью или плоскопараллельным слоем называется однородным. Сила здесь имеет одно и
+то же направление --- перпендикулярное плоскости --- и одинаковую величину в любой точке. Уровенные
+поверхности такого поля --- плоскости, параллельные слою. В прикладной геодезии, например, в
+рядовых строительных работах, почти всегда предполагается, что работы проводятся именно в однородном поле.
+
+\section{Свойства потенциала притяжения}
+
+\subsection{Аналитические свойства потенциала объёмных масс}
+Потенциал объёмных масс является функцией непрерывной, однозначной и конечной во всём проcтранстве.
+Эими же свойствами обладают и первые производные потенциала.
+
+Исследуем вторые производные. Наййдём вторые производные потенциала объёмных масс в прямоугольных
+координатах, получим
+\begin{align*}
+    &\dpd[2]{V}{x} = G\iiint\limits_{\tau} \delta \left[ \dfrac{3 \left( x - x_1 \right)^2}{r^5} -
+    \dfrac{1}{r^3} \right]\dif\tau, \\
+    &\dpd[2]{V}{y} = G\iiint\limits_{\tau} \delta \left[ \dfrac{3 \left( y - y_1 \right)^2}{r^5} -
+    \dfrac{1}{r^3} \right]\dif\tau, \\
+    &\dpd[2]{V}{z} = G\iiint\limits_{\tau} \delta \left[ \dfrac{3 \left( z - z_1 \right)^2}{r^5} -
+    \dfrac{1}{r^3} \right]\dif\tau.
+\end{align*}
+Складываем все три равенства, тогда
+\begin{equation*}
+    \dpd[2]{V}{x} + \dpd[2]{V}{y} + \dpd[2]{V}{y} = 
+    G\iiint\limits_{\tau} \delta \left[ \dfrac{3 \left( x - x_1 \right)^2 +
+        3 \left( y - y_1 \right)^2 +3 \left( z - z_1 \right)^2}{r^5} - \dfrac{3}{r^3} 
+    \right]\dif\tau =
+    G\iiint\limits_{\tau} \delta \left[ \dfrac{3}{r^3} - \dfrac{3}{r^3} \right]\dif\tau = 0.
+\end{equation*}
+То есть
+\begin{equation*}
+    \Delta V = \dpd[2]{V}{x} + \dpd[2]{V}{y} + \dpd[2]{V}{y} = 0.
+\end{equation*}
+Это уравнение Лапласа --- дифференциальное уравнение в частных производных второго порядка. Здесь
+$\Delta = \dpd[2]{}{x} + \dpd[2]{}{y} + \dpd[2]{}{y}$ --- оператор Лапласа или <<лапласиан>>.
+Функция, непрерывная в некоторой области вместе со своими частными производными первого и второго
+порядков и удовлетворяющая уравнению Лапласа, называется \textbf{гармонической}. Таким образом,
+потенциал притяжения во внешнем пространстве является гармонической функцией.
+
+Внутри притягивающих масс потенциал удовлетворяет уравнению Пуассона
+\begin{equation*}
+    \Delta V = -4\pi G\delta
+\end{equation*}
+и, следовательно, не является гармонической функцией. Легко заметить, что вне притягивающих масс
+$\delta = 0$ уравнение Пуассона переходит в уравнение Лапласа.
+
+Исследуем поведение потенциала на бесконечности. Напишем неравенство
+\begin{equation*}
+    G\int\limits_\tau\dfrac{\delta\dif\tau}{r_{min}} >
+    G\int\limits_\tau\dfrac{\delta\dif\tau}{r} >
+    G\int\limits_\tau\dfrac{\delta\dif\tau}{r_{max}},
+\end{equation*}
+где $r_{min}$, $r_{max}$ --- минимальное и максимальное расстояние от притягиваемой точки до
+притягиваемого тела. Поскольку $\int\limits_\tau\delta\dif\tau = M$, то
+\begin{equation*}
+    G\dfrac{M}{r_{min}} >
+    G\dfrac{M}{r} >
+    G\dfrac{M}{r_{max}}.
+\end{equation*}
+Образуем производную $\pd{V}{r} = -G\int\limits_\tau\dfrac{\delta\dif\tau}{r^2}$ и неравенство
+\begin{equation*}
+    G\dfrac{M}{r^2_{min}} >
+     \left|\dpd{V}{r}\right| >
+    G\dfrac{M}{r^2_{max}}.
+\end{equation*}
+Теперь умножаем предпоследнее неравенство на $r$, а последнее --- на $r^2$, тогда
+\begin{equation*}
+    G\dfrac{Mr}{r_{min}} >
+    Vr >
+    G\dfrac{Mr}{r_{max}}, \qquad
+    G\dfrac{Mr^2}{r^2_{min}} >
+     \left|\dpd{V}{r}\right| r^2 >
+    G\dfrac{M r^2}{r^2_{max}}.
+\end{equation*}
+Пусть $r\to\infty$, тогда
+\begin{equation*}
+    \lim\limits_{r\to\infty}\dfrac{r}{r_{min}} = 1,\qquad 
+    \lim\limits_{r\to\infty}\dfrac{r}{r_{max}} = 1,
+\end{equation*}
+и
+\begin{equation*}
+    \lim\limits_{r\to\infty} V = 0,\qquad 
+    \lim\limits_{r\to\infty} rV = GM,\qquad
+    \lim\limits_{r\to\infty} \left|\dpd{V}{r}\right| r^2 = GM.
+\end{equation*}
+Функция, удовлетворяющая всем трём последним пределам называется \textbf{регулярной на
+бесконечности}. Следовательно, потенциал является функцией, регулярной на бесконечности.
+
+\subsection{Локальные свойства потенциала}
+Пусть точка $P\left( x,y,z \right)$ переместилась в точку $P_1\left( x + \dif x, y + \dif y, z +
+\dif z \right)$, находящуюся на бесконечно малом расстоянии $dl$ от $P$, тогда
+\begin{equation*}
+    \dif V = \pd{V}{x}\dif x + \pd{V}{y}\dif y + \pd{V}{z}\dif z.
+\end{equation*}
+Для производных и направления $\dif l$ можно записать
+\begin{align*}
+    \dpd{V}{x} = |\vv{F}|\cos\left( \vv{F}, x \right),\qquad \dif x = \dif l\cos\left( x, \dif l
+    \right),\\
+    \dpd{V}{y} = |\vv{F}|\cos\left( \vv{F}, y \right),\qquad \dif y = \dif l\cos\left( y, \dif l
+    \right),\\
+    \dpd{V}{z} = |\vv{F}|\cos\left( \vv{F}, z \right),\qquad \dif z = \dif l\cos\left( z, \dif l
+    \right),
+\end{align*}
+тогда
+\begin{equation*}
+    \dif V = |\vv{F}|\left[
+        \cos\left( \vv{F}, x \right)\cos\left( x, \dif l \right) +
+        \cos\left( \vv{F}, y \right)\cos\left( y, \dif l \right) +
+    \cos\left( \vv{F}, z \right)\cos\left( z, \dif l \right) \right]\dif l,
+\end{equation*}
+или
+\begin{equation*}
+    \dif V = |\vv{F}|cos\left( \vv{F}, \dif l \right)\dif l.
+\end{equation*}
+Из этого выражения силедуют несколько важных и полезных свойств.
+\begin{enumerate}
+    \item Производная потенциала $\dif V/ \dif l$ по любому направлению $l$ равна проекции силы на
+        это направление
+        \begin{equation*}
+            \od{V}{l} =  |\vv{F}|cos\left( \vv{F}, \dif l \right).
+        \end{equation*}
+    \item Если $\cos\left( \vv{F}, \dif l \right) = 1$, то изменение потенциала максимально и
+        $dl$ направлено по линии действия силы. Тогда $\vv{F}$ является вектор--градиентом
+        потенциала
+        \begin{equation*}
+            \vv{F} = \textrm{grad}\,V.
+        \end{equation*}
+    \item Если $\cos\left( \vv{F}, \dif l \right) = 0$, то $\dif V = 0$ и 
+        \begin{equation*}
+            V\left( x, y, z \right) = const.
+        \end{equation*}
+        Уравнение поверхности, в каждой точке которой сила направлена по нормали, а потенциал ---
+        постоянен. Это уровенная или эквипотенциальная поверхность. Заметим, что на силу не
+        накладываются никакие ограничения и, вообще говоря, она может меняться на уровенной
+        поверхности.
+    \item Если $\cos\left( \vv{F}, \dif l \right) = -1$ и $\dif l = \dif h$ --- расстояние между
+        бусконечно близкими уровенными поверхностями, то
+        \begin{equation*}
+            \dif V = - |\vv{F}| \dif h, \qquad \dif h = -\dfrac{\dif V}{|\vv{F}|}.     
+        \end{equation*}
+    \item Пусть $\dif h\to 0$, тогда получим кривую, перпендикулярную ко всем уровенным
+        поверхностям, в каждой точке которой касательная совпадает с направлением силы. Эта кривая
+        называется \textbf{силовой линией}. Найдём длину отрезка $OM$ силовой линии между двумя уровенным
+        поверхностями
+        \begin{equation*}
+            h = -\int\limits_{O}^{M} \dfrac{\dif V}{|\vv{F}|} = - \dfrac{V_M - V_O}{F_m} =
+            \dfrac{V_O - V_M}{F_m},
+        \end{equation*}
+        где $F_m$ --- среднее интегральное значение силы на отрезке $OM$. Таким образом, для
+        определения высоты в гравитационном поле необходимо знать разность потенциалов и среднее
+        значение силы между уровенными поверхностями. Эта формула имеет важное значение в теории
+        высот.
+\end{enumerate}
+
+%\printbibliography
+\end{document}
