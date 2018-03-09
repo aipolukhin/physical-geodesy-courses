@@ -1,0 +1,142 @@
+\documentclass[11pt, a4paper,addpoints]{exam}
+
+% Languages and fonts
+\usepackage{cmap} 
+\usepackage[T2A]{fontenc}
+\usepackage[utf8]{inputenc} 
+\usepackage[english, russian]{babel}
+\usepackage{microtype}
+\usepackage{indentfirst}
+\frenchspacing
+
+% Mathematics
+\usepackage{amsmath, amssymb, amsfonts, amsthm, mathtools, fixmath}
+\mathtoolsset{showonlyrefs=true}
+\usepackage{esint, esvect} % integrals and vectors
+\usepackage{systeme} % equation system
+\usepackage{commath} % partials and differentials
+\usepackage{icomma} % smart comma ($0,2$ is a number)
+\usepackage{mathabx}% astronomy
+
+% Floats
+\usepackage{float}
+
+% Tables
+\usepackage{array,tabularx,tabulary,booktabs} % better tables
+\usepackage{longtable}
+\usepackage{multirow}
+
+% Graphics
+\usepackage[pdftex]{graphicx}
+\usepackage{wrapfig}
+
+% Theorems
+\renewcommand{\proofname}{Доказательство}
+
+%\theoremstyle{plain}
+\newtheorem{theorem}{Теорема}[section]
+
+%\theoremstyle{definition}
+\newtheorem{definition}{Определение}
+\newtheorem{corollary}{Следствие}[theorem]
+
+\theoremstyle{remark}
+\newtheorem{remark}{Замечание}
+
+\usepackage[top=20mm,bottom=20mm,left=20mm,right=20mm]{geometry}
+
+\usepackage{soul}
+\usepackage{enumerate} % better numbered lists
+\usepackage{hyperref}
+\usepackage{xcolor}
+\usepackage{tikz} % drawing
+
+%\usepackage{csquotes}
+%\usepackage[style=authoryear,maxcitenames=2,backend=biber,sorting=nty]{biblatex}
+%\bibliography{}
+
+\renewcommand{\epsilon}{\ensuremath{\varepsilon}}
+\renewcommand{\phi}{\ensuremath{\varphi}}
+\renewcommand{\theta}{\vartheta}
+\renewcommand{\kappa}{\ensuremath{\varkappa}}
+\renewcommand{\le}{\ensuremath{\leqslant}}
+\renewcommand{\leq}{\ensuremath{\leqslant}}
+\renewcommand{\ge}{\ensuremath{\geqslant}}
+\renewcommand{\geq}{\ensuremath{\geqslant}}
+
+\usepackage[useregional]{datetime2}
+
+% exam
+\pointsinrightmargin
+\marginpointname{ б.}
+
+% custom maketitle
+\usepackage{titling}
+\setlength{\droptitle}{-4em}
+\posttitle{\end{center}\vspace{-4em}}
+
+\title{{\Large Теория фигур планет и гравиметрия 2018}\\ 
+    {\bf\Large Домашнее задание № 3}}
+\author{}
+\DTMsavedate{deadline}{2018-03-26}
+
+\date{\normalsize\bf Крайний срок сдачи: \DTMusedate{deadline}}
+
+\begin{document}
+\maketitle
+\thispagestyle{empty}
+\begin{questions}
+    \question[1] Пусть Земля --- однородный шар радиусом $R = 6371\,\text{км}$. Геоцентрическая
+    гравитационная постоянная $GM = 3,986\times10^{14}\,\text{м}^3\text{с}^{-2}$.
+    \begin{parts}
+        \part Найти значение средней плотности Земли.
+        \part Вычислить потенциал и силу притяжения на заданных расстояниях от центра планеты:
+        \begin{enumerate}
+            \item $r_1 = 3,00\times 10^6\,\text{м}$ (внутренняя точка),
+            \item $r_2 = 6,371\times 10^6\,\text{м}$ (точка на поверхности),
+            \item $r_3 = 6,384\times 10^6\,\text{м}$ (вершина вулкана Чимборасо),
+            \item $r_4 = 6,42\times 10^6\,\text{м}$ (50 км над поверхностью --- верхняя граница стратосферы),
+            \item $r_5 = 26,4\times 10^6\,\text{м}$ (20000 км над поверхностью --- высота полета спунтиков GPS).
+        \end{enumerate}
+    \end{parts}
+    \question[1] Построить графики зависимости силы и потенциала притяжения от расстояния до
+    притягиваемой точки для притягивающих однородных сферы, шара и шарового слоя. Рассматривать
+    случай, когда расстояние меняется от $-4R$ до $4R$, где $R$ --- внешний радиус притягивающего
+    тела.
+    \question[1] По сейсмическим данным известно, что Землю приближённо можно представить состоящей 
+    из четырёх однородных шаровых слоёв: внутреннее ядро, внешнее ядро, мантия и кора. 
+    Написать выражения, необходимые для 
+    вычисления потенциала и силы притяжения каждого слоя на единичную массу, находящуюся на поверхности 
+    планеты (шара). Вычислить эти величины. Найти полный потенциал и результирующую силу.
+    Данные взять из таблицы:
+    \begin{table}[h]
+            \centering
+            \begin{tabular}{|c|c|c|c|c|}
+                \hline
+                & Слой & $R_1$ & $R_2$ & Средняя плотность \\\hline
+                &  & км & км & $\text{г/см}^3$ \\\hline
+                1 & Внутреннее ядро  & 0  & 1300  & 13 \\\hline
+                2 & Внешнее ядро  & 1200  & 3500  & 11 \\\hline
+                3 & Мантия  & 3500  & 6350  & 4,5 \\\hline
+                4 & Кора & 6350  & 6400  & 2,7 \\\hline
+            \end{tabular}
+        \end{table}
+        \question[2] Определить притяжение атмсоферы на высоте $H$ над Землёй. Считать, что
+        атмосфера состоит из сферических слоёв, плотность меняется по закону $\delta = 1,3333
+        e^{-0,13H}\,\text{кг/м}^3$.
+        \question[2] Вычислить притяжение колец Сатурна на оси вращения планеты. Найти значение
+        притяжения на высоте $z = 100\times i\,\text{км}$ ($i$ --- вариант). Масса колец Сатурна 
+        $9,6\times 10^{20}\,\text{кг}$, внутренний
+        радиус $\rho_1 = 72\ 000\,\text{км}$, внешний $\rho_2 = 139\ 000\,\text{км}$, толщиной колец
+        пренебречь. Полярный радиус Сатурна $54\ 400\,\text{км}$.
+        \question[3] Центр однородного шара радиуса $R$ находится под землёй на глубине $a$ $(R < a)$.
+        Плотность шара $\delta$ больше, чем плотность поверхностных слоёв Земли $\Delta$. 
+        Землю считать плоской.
+        \begin{parts}
+            \part Определить потенциал $T$ на земной поверхности, вызванный аномальной массой шара. 
+            \part Определить производные потенциала $\dpd{T}{x}$, $\dpd{T}{y}$ и $\dpd{T}{z}$.
+            \part Построить графики $T$, $\dpd{T}{x}$ и $\dpd{T}{z}$ в плоскости $(xz)$.
+        \end{parts}
+\end{questions}
+%\printbibliography
+\end{document}
