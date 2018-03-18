@@ -1,0 +1,317 @@
+\documentclass[11pt, a4paper]{article}
+
+% Languages and fonts
+\usepackage{cmap} 
+\usepackage[T2A]{fontenc}
+\usepackage[utf8]{inputenc} 
+\usepackage[english, russian]{babel}
+\usepackage{microtype}
+\usepackage{indentfirst}
+\frenchspacing
+
+% Mathematics
+\usepackage{amsmath, amssymb, amsfonts, amsthm, mathtools, fixmath}
+\usepackage{esint, esvect} % integrals and vectors
+\usepackage{systeme} % equation system
+\usepackage{commath} % partials and differentials
+\usepackage{icomma} % smart comma ($0,2$ is a number)
+
+% Floats
+\usepackage{float}
+
+% Tables
+\usepackage{array,tabularx,tabulary,booktabs} % better tables
+\usepackage{longtable}
+\usepackage{multirow}
+
+% Graphics
+\usepackage[pdftex]{graphicx}
+\usepackage{wrapfig}
+
+% Theorems
+\renewcommand{\proofname}{Доказательство}
+
+\theoremstyle{plain}
+\newtheorem{theorem}{Теорема}[section]
+
+\theoremstyle{definition}
+\newtheorem{definition}{Определение}
+\newtheorem{corollary}{Следствие}[theorem]
+\newtheorem{problem}{Задача}[section]
+
+\theoremstyle{remark}
+\newtheorem{remark}{Замечание}
+\newtheorem*{solution}{Решение}
+
+\usepackage[top=20mm,bottom=20mm,left=20mm,right=20mm]{geometry}
+
+\usepackage{lastpage} % how many pages
+
+\usepackage{soul}
+
+\usepackage{framed} % easy frames
+\usepackage{enumerate} % better numbered lists
+
+\usepackage{hyperref}
+\usepackage{xcolor}
+
+\usepackage{tikz} % drawing
+
+\usepackage{csquotes}
+\usepackage[style=numeric,backend=biber,sorting=none]{biblatex}
+\addbibresource{../../bibliography.bib}
+
+\renewcommand{\epsilon}{\ensuremath{\varepsilon}}
+\renewcommand{\phi}{\ensuremath{\varphi}}
+%\renewcommand{\theta}{\vartheta}
+\renewcommand{\kappa}{\ensuremath{\varkappa}}
+\renewcommand{\le}{\ensuremath{\leqslant}}
+\renewcommand{\leq}{\ensuremath{\leqslant}}
+\renewcommand{\ge}{\ensuremath{\geqslant}}
+\renewcommand{\geq}{\ensuremath{\geqslant}}
+
+\usepackage[useregional]{datetime2}
+
+% custom maketitle
+\usepackage{titling}
+\setlength{\droptitle}{-4em}
+\posttitle{\end{center}\vspace{-3em}}
+
+\title{{\Large Геодезическая гравиметрия 2018}\\ 
+    {\bf\Large Практическое занятие № 5} \\
+{\Large Притяжение тел сложной формы. Гармонические функции}}
+\author{}
+\DTMsavedate{lessondate}{2018-03-13}
+\date{\DTMusedate{lessondate}}
+
+\begin{document}
+\maketitle
+
+Потенциал объёмных масс
+\begin{equation}
+    V = G\iiint\limits_\tau \dfrac{\delta}{r}\dif \tau,
+\end{equation}
+а внутри притягивающих масс потенциал удовлетворяет уравнению Пуассона
+\begin{equation}
+    \label{eq:poisson}
+    \Delta V = -4\pi G\delta.
+\end{equation}
+Из последних двух выражений нетрудно получить
+\begin{equation}
+    \label{eq:poissonvol}
+    V = -\dfrac{1}{4\pi}\iiint\limits_\tau \dfrac{\Delta V}{r} \dif\tau,
+\end{equation}
+то есть зная вторые производные потенциала притяжения во всех внутренних точках объёма $\tau$ можно
+определить потенциал в любой точке пространства.
+
+\section{Первая и вторая формулы Грина}
+Пусть в области $\tau$ с границей $\sigma$ заданы две правильные функции $U\left( x, y, z \right)$ и
+$V \left( x, y, z \right)$. Функция называется правильной в области $\tau$, если она внутри этой
+области и на её границе, конечна, однозначна и непрерывна вместе со всеми своими частными
+производными первых двух порядков. \par
+
+Если правильная функция $V \left( x, y, z \right)$ удовлетворяет во всех точках области $\sigma$
+уравнению Лапласа $\Delta V = 0$, то она называется гармонической в области $\tau$. 
+
+Опуская вывод, запишем для этих функций первую формулу Грина
+\begin{equation*}
+    \iiint\limits_\tau U\Delta V\dif\tau + \iiint\limits_\tau D\left( U, V \right)\dif\tau =
+    \iint\limits_\sigma U\od{V}{n}\dif\sigma,
+\end{equation*}
+где
+\begin{equation*}
+    D\left( U, V \right) = \dpd{U}{x}\dpd{V}{x} + \dpd{U}{y}\dpd{V}{y} + \dpd{U}{z}\dpd{V}{z}
+\end{equation*}
+--- оператор Дирихле, $\dod{V}{n}$ --- производная по внешней нормали к поверхности $\sigma$.
+Для краткости далее не будем писать знаки тройных и двойных интегралов, то есть
+\begin{equation}
+    \label{eq:firstGreen}
+    \int\limits_\tau U\Delta V\dif\tau + \int\limits_\tau D\left( U, V \right)\dif\tau =
+    \int\limits_\sigma U\od{V}{n}\dif\sigma.
+\end{equation}
+Поменяем в (\ref{eq:firstGreen}) местами функции $U$ и $V$, получим
+\begin{equation*}
+    \int\limits_\tau V\Delta U\dif\tau + \int\limits_\tau D\left( V, U \right)\dif\tau =
+    \int\limits_\sigma V\od{U}{n}\dif\sigma.
+\end{equation*}
+Вычитая это выражение почленно из (\ref{eq:firstGreen}), получаем вторую формулу Грина
+\begin{equation}
+    \label{eq:secondGreen}
+    \int\limits_\tau \left[ U\Delta V - V\Delta U \right] \dif\tau  =
+    \int\limits_\sigma U\od{V}{n} - V\od{U}{n} \dif\sigma.
+\end{equation}
+Пусть $U = 1$, тогда из первой формулы Грина (\ref{eq:firstGreen})
+\begin{equation}
+    \label{eq:firstGreenU1}
+    \int\limits_\tau \Delta V\dif\tau = \int\limits_\sigma\od{V}{n}\dif\sigma.
+\end{equation}
+Если $V$ --- гармоническая функция ($\Delta V = 0$), то
+\begin{equation}
+    \label{eq:harmchar}
+    \int\limits_\sigma\od{V}{n}\dif\sigma = 0,
+\end{equation}
+то есть двойной интеграл от нормальной производной гармонической функции по замкнутой поверхности
+равен нулю (или поток вектора градиента гармонической функции через замкнутую поверхность равен
+нулю). Это \textbf{характеристическое свойство гармонических функций}. 
+Причем, двойной интеграл может быть взять по любой (не только по $\sigma$ в смысле границы
+области $\tau$) замкнутой поверхности, принадлежащей
+области правильности функции. 
+Из характеристического свойства можно доказать одну фундаментальную для гармонических функций теорему. 
+\begin{theorem}[О максимуме и минимуме]
+    Гармоническая функция $V$, заданная в области $\tau$, не может иметь внутри этой области ни
+    макcимумов, ни минимумов.
+    \label{theorem:maxmin}
+\end{theorem}
+\begin{proof}
+    Будем рассуждать от противного. Предположим, что гармоническая функция $V$ достигает в некоторой
+    точке $P$, лежащей внутри $\tau$ своего максимума (минимума). В силу этого, значения функции
+    $V$ вблизи точки $P$ будут меньше (больше), чем значения функции в самой точке $P$. Поэтому мы
+    можем найти сферу $\sigma$ столь малого радиуса, что во всех точка поверхности этой сферы
+    производная по внешней нормали $\od{V}{n}$ будет отрицательной (положительной). Поэтому левая
+    часть (\ref{eq:harmchar}) будет существенно положительной (отрицательной), что противоречит самой формуле
+    (\ref{eq:harmchar}).
+\end{proof}
+
+\section{Стоксовы постоянные}
+Вернёмся к формуле (\ref{eq:firstGreenU1}). Если $V$ --- потенциал объёмных масс, а точка находится внутри притягиваемого тела 
+$\tau$, то $\Delta V = -4\pi G\delta$, поэтому
+\begin{equation*}
+    -4\pi G\underbrace{\int\limits_\tau\delta\dif\tau}_{\text{масса}} =
+    \int\limits_\sigma\od{V}{n}\dif\sigma,
+\end{equation*}
+откуда получаем формулу Гаусса
+\begin{equation}
+    \label{eq:gm}
+    GM = -\dfrac{1}{4\pi}\int\limits_\sigma\od{V}{n}\dif\sigma,
+\end{equation}
+где $M$ --- полная масса тела. Если поверхность $\sigma$ ограничивает некоторую внутреннюю
+область для $\tau$, скажем, $\tau'$, то $M$ --- будет массой, заключённой в объёме $\tau'$. Таким
+образом, если на поверхности $\sigma$ тела $\tau$ известны значения производной потенциала по нормали к
+этой поверхности, то можно вычислить массу $M$ (или $GM$ --- гравитационный параметр,
+планетоцентрическая гравитационная постоянная), заключенную в $\tau$. Если $\sigma$ является
+уровенной для потенциала $V$, то производная по нормали есть сила $F = -\od{V}{n}$.
+
+Обратимся теперь ко второй формуле Грина (\ref{eq:secondGreen}). Пусть $V$ --- потенциал
+объёмных масс $\tau$, $U$ --- произвольная гармоническая функция. Применим вторую формулу Грина
+\begin{equation*}
+    -4\pi G\delta \int\limits_{\tau} U \delta \dif\tau = \int\limits_\sigma 
+    \left( U \od{V}{n} - V \od{U}{n} \right). 
+\end{equation*}
+Объёмные интегралы 
+\begin{equation*}
+\int\limits_{\tau} U \delta \dif\tau
+\end{equation*}
+от произведения плотности на произвольную гармоническую функцию называются
+\textbf{стоксовыми постоянными}. Они могут быть однозначно определены, если на поверхности
+$\sigma$ тела заданы производные потенциала $\od{V}{n}$ притяжения по нормали и значения самого потенциала $V$.
+
+Гармоническую функцию $U$ можно выбирать в виде многочлена степени $n$ от координат $x$, $y$,
+$z$. В общем виде можно записать однородный многочлен степени $n$
+\begin{equation*}
+    U_n \left( x, y, z \right) = \sum\limits_{n=1}^{N} a_{pqr} x^p y^q z^r,\quad p + q + r = n,
+    \quad \Delta U = 0.
+\end{equation*}
+Разные степени $n$ соответствуют стоксовым постоянным разных порядков. Поскольку $U$ ---
+гармоническая функция $\Delta U = 0$, то коэффициенты не могут быть выбраны произвольно.
+
+При $n = 0$ $U\left( x, y, z \right) = const$. Пусть  $U \left( x, y, z \right) = 1$, тогда
+получим стоксову постоянную нулевого порядка (\ref{eq:gm}), которая равна массе тела.
+
+Пусть $n = 1$,
+тогда $U \left( x, y, z \right) = x + y + z$, поэтому стоксовы постоянные первого
+порядка будут равны
+\begin{equation*}
+    \int\limits_{\tau} x \delta \dif\tau,\quad
+    \int\limits_{\tau} y \delta \dif\tau,\quad 
+    \int\limits_{\tau} z \delta \dif\tau.
+\end{equation*}
+Из механики известно, что положение центра масс тела --- геометрической точки,
+характеризующей движение тела или системы частиц как целого --- определяется так
+\begin{equation*}
+    \vv{r_c} = \dfrac{1}{M} \int\limits_\tau \delta \vv{r}\dif\tau,
+\end{equation*}
+следовательно, стоксовы постоянные первого порядка определяют положение центра масс тела
+\begin{equation*}
+    x_0 = \dfrac{1}{M}\int\limits_{\tau} x \delta \dif\tau,\quad
+    y_0 = \dfrac{1}{M}\int\limits_{\tau} y \delta \dif\tau,\quad 
+    z_0 = \dfrac{1}{M}\int\limits_{\tau} z \delta \dif\tau.
+\end{equation*}
+Вообще говоря, интегралы $\int_M r^n \dif m$ от произведения элемента массы $\dif m = \delta\dif\tau$ массы тела на
+$n$--ую степень от расстояния до оси или плоскости называются моментами тела относительно оси или
+плоскости соответственно. Моменты первого порядка ($n = 1$) называются статическими. Таким образом, стоксовы
+постоянные первого порядка это статические моменты первого порядка относительно координатных осей.\\
+Моменты второго порядка ($n = 2$) называются моментами инерции
+\begin{equation*}
+    J = \int\limits_M r^2 \dif m,
+\end{equation*}
+которые являются мерой инертности тела во вращательном движении вокруг оси.\\
+Если положить
+\begin{equation*}
+    U = xy,\quad U = xz, \quad U = yz,
+\end{equation*}
+то получим стоксовы постоянные
+\begin{equation*}
+    J_{xy} = \int\limits_{\tau} xy \delta \dif\tau,\quad
+    J_{xz} = \int\limits_{\tau} xz \delta \dif\tau,\quad
+    J_{yz} = \int\limits_{\tau} yz \delta \dif\tau,
+\end{equation*}
+которые называются центробежными моментами инерции или произведениями инерции относительно осей
+прямоугольной системы координат.\\
+Рассмотрим еще две стоксовы постоянные второго порядка для
+\begin{equation*}
+    U = z^2 - \dfrac{x^2 + y^2}{2},\quad U =  x^2 - y^2,
+\end{equation*}
+которые имеют вид
+\begin{align*}
+    \int\limits_{\tau} \left[ z^2 - \dfrac{x^2 + y^2}{2} \right] \delta \dif\tau =
+    \int\limits_{\tau} \dfrac{\delta}{2} \left[ 2z^2 - x^2 + y^2 \right] \dif\tau =
+    \dfrac{A + B}{2} - C,\\
+    \int\limits_{\tau} \left[ x^2 - y^2 \right] \delta \dif\tau = B - A,
+\end{align*}
+где 
+\begin{align*}
+    &A = J_{xx} = \int\limits_{\tau} \left( y^2 + z^2 \right) \delta \dif\tau,\quad\\
+    &B = J_{yy} = \int\limits_{\tau} \left( x^2 + z^2 \right) \delta \dif\tau,\quad\\
+    &C = J_{zz} = \int\limits_{\tau} \left( x^2 + y^2 \right) \delta \dif\tau
+\end{align*}
+--- моменты инерции тела относительно осей $X$, $Y$, $Z$ соответственно.
+
+Таким образом, массу тела, координаты центра масс, разности моментов инерции, произведения инерции
+можно рассматривать как стоксовы постоянные различных порядков.
+
+Определение стоксовых постоянных является одной из основных задач современной геодезии. Для Земли она
+решается методами космической геодезии. Определением стоксовых постоянных аномальных тел составляет
+основную задачу гравитационной разведки.
+
+\section{Фундаментальная формула Грина}
+Во второй формуле Грина (\ref{eq:secondGreen}) будем полагать $U = \frac{1}{r}$, тогда
+\begin{equation}
+    \int\limits_\tau \dfrac{\Delta V}{r} \dif\tau  = \int\limits_\sigma \left[
+    \dfrac{1}{r}\dod{V}{n} - V\dod{}{n}\left( \frac{1}{r} \right)\right] \dif\sigma.
+\end{equation}
+Если $V$ --- потенциал объемных масс, то учитывая выражение ($\ref{eq:poissonvol}$), получаем
+\begin{equation}
+    \label{eq:fundamentalGreen}
+    V  = -\dfrac{1}{4\pi}\int\limits_\sigma \left[
+    \dfrac{1}{r}\dod{V}{n} - V\dod{}{n}\left( \frac{1}{r} \right)\right] \dif\sigma,
+\end{equation}
+которая называется \textbf{основной формулой теории гармонических функций} или \textbf{фундаментальной
+формулой Грина} для внешней точки.
+Первое слагаемое правой части 
+\begin{equation*}
+    -\dfrac{1}{4\pi}\int\limits_\sigma  \dfrac{1}{r}\dod{V}{n}  \dif\sigma
+\end{equation*}
+есть не что иное, как потенциал притяжения простого слоя поверхностной плотности $\mu =
+-\dfrac{1}{4\pi}\dod{V}{n}$. Второе слагаемое
+\begin{equation*}
+    \dfrac{1}{4\pi}\int\limits_\sigma V\dod{}{n}\left( \frac{1}{r} \right)\dif\sigma
+\end{equation*}
+представляет собой потенциал двойного слоя плотности $\dfrac{V}{4\pi}$. 
+
+Таким образом, потенциал объёмных масс во внешнем пространстве можно представить суммой
+потенциалов двойного и прстого слоя, распределённых на поверхности $\sigma$ притягиваемого тела
+$\tau$. Отметим и то, что для определения внешнего потенциала не нужна информация о распределении
+плотности внутри тела.
+
+%\printbibliography
+\end{document}
