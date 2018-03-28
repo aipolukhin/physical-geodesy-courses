@@ -1,0 +1,181 @@
+\documentclass[11pt, a4paper,addpoints]{exam}
+
+% Languages and fonts
+\usepackage{cmap} 
+\usepackage[T2A]{fontenc}
+\usepackage[utf8]{inputenc} 
+\usepackage[english, russian]{babel}
+\usepackage{microtype}
+\usepackage{indentfirst}
+\frenchspacing
+
+% Mathematics
+\usepackage{amsmath, amssymb, amsfonts, amsthm, mathtools, fixmath}
+\mathtoolsset{showonlyrefs=true}
+\usepackage{esint, esvect} % integrals and vectors
+\usepackage{systeme} % equation system
+\usepackage{commath} % partials and differentials
+\usepackage{icomma} % smart comma ($0,2$ is a number)
+\usepackage{mathabx}% astronomy
+
+% Floats
+\usepackage{float}
+
+% Tables
+\usepackage{array,tabularx,tabulary,booktabs} % better tables
+\usepackage{longtable}
+\usepackage{multirow}
+
+% Graphics
+\usepackage[pdftex]{graphicx}
+\usepackage{wrapfig}
+
+% Theorems
+\renewcommand{\proofname}{Доказательство}
+
+%\theoremstyle{plain}
+\newtheorem{theorem}{Теорема}[section]
+
+%\theoremstyle{definition}
+\newtheorem{definition}{Определение}
+\newtheorem{corollary}{Следствие}[theorem]
+
+\theoremstyle{remark}
+\newtheorem{remark}{Замечание}
+
+\usepackage[top=20mm,bottom=20mm,left=20mm,right=20mm]{geometry}
+
+\usepackage{soul}
+\usepackage{enumerate} % better numbered lists
+\usepackage{hyperref}
+\usepackage{xcolor}
+\usepackage{tikz} % drawing
+
+%\usepackage{csquotes}
+%\usepackage[style=authoryear,maxcitenames=2,backend=biber,sorting=nty]{biblatex}
+%\bibliography{}
+
+\renewcommand{\epsilon}{\ensuremath{\varepsilon}}
+\renewcommand{\phi}{\ensuremath{\varphi}}
+\renewcommand{\theta}{\vartheta}
+\renewcommand{\kappa}{\ensuremath{\varkappa}}
+\renewcommand{\le}{\ensuremath{\leqslant}}
+\renewcommand{\leq}{\ensuremath{\leqslant}}
+\renewcommand{\ge}{\ensuremath{\geqslant}}
+\renewcommand{\geq}{\ensuremath{\geqslant}}
+
+\usepackage[useregional]{datetime2}
+
+% exam
+\pointsinrightmargin
+\marginpointname{ б.}
+
+% custom maketitle
+\usepackage{titling}
+\setlength{\droptitle}{-4em}
+\posttitle{\end{center}\vspace{-4em}}
+
+\title{{\Large Геодезическая гравиметрия 2018}\\ 
+    {\bf\Large Домашнее задание № 5}}
+\author{}
+\DTMsavedate{deadline}{2018-04-11}
+
+\date{\normalsize\bf Крайний срок сдачи: \DTMusedate{deadline}}
+
+\begin{document}
+\maketitle
+\thispagestyle{empty}
+\begin{questions}
+        \question[1] Найти минимальную продолжительность суток, при которой сила тяжести будет равна
+        нулю. Землю считать вращающимся шаром.
+        \question[1] Космические агентства стремятся располагать космодромы ближе к экватору.
+        Вычислить, как изменится вес ракеты массой $10$ тонн при её запуске с различных космодромов
+        по сравнению с экватором. Землю считать вращающимся шаром. Данные взять из таблицы.
+        \begin{table}[h]
+            \centering
+            \begin{tabular}{|c|c|}
+                \hline
+                Название & Широта $\phi ^\circ$ \\ \hline
+                Мыс Канаверал (США) & $28$ \\ \hline
+                Байконур (Россия) & $46$ \\ \hline
+                Восточный (Россия) & $52$ \\ \hline
+                Плесецк (Россия) & $63$ \\\hline
+            \end{tabular}
+        \end{table}
+        \question[3] Построить графики поправок в измеренные значения силы тяжести 
+        \begin{parts}
+            \part за движение полюса,
+            \part за приливные вариации силы тяжести, 
+            \part за изменение атмосферного давления
+        \end{parts}
+        для фундаментального гравиметрического пункта <<ЦНИИГАиК>> (Москва):
+        \begin{table}[h]
+            \centering
+            \begin{tabular}{|c|c|c|}
+                \hline
+                 $\phi\, [^\circ]$ & $\lambda\, [^\circ]$ &$H\, [\text{м}]$ \\\hline
+                 55,85503 & 37,51604 & 153\\\hline
+            \end{tabular}
+        \end{table}
+
+        График построить на 60 дней, начиная с 1 мая 2016 года + $14\times i$ дней, где $i$ ---
+        вариант по журналу промежуточной успеваемости. Воспользоваться указанием на следующей странице.
+\end{questions}
+\newpage
+\thispagestyle{empty}
+\begin{center}
+    \textbf{Указание к вычислению поправок в измеренное значение силы тяжести}
+\end{center}
+\begin{flushleft}
+    \textbf{Поправка за движение полюса} 
+\end{flushleft}
+Поправка за движение полюса вычисляется по формуле
+    \begin{equation*}
+            \Delta g_p = - 1,164\times 10^8 \omega^2 a \sin{2\phi} \left( \dfrac{x_p}{\rho''} \cos\lambda -
+            \dfrac{y_p}{\rho''}\sin\lambda \right)\quad[\text{мкГал}],
+        \end{equation*}
+        где $\omega$ --- угловая скорость вращения Земли; $a$ --- большая полуось, $\phi$, $\lambda$ --- широта
+        и долгота пункта; $x_p$, $y_p$ --- координаты полюса; $\rho'' = \dfrac{360^\circ \times 60'
+        \times 60''}{2\pi} \approx 206265''$.\\
+        Данные взять с сайта Международной службы вращения Земли (IERS):\par
+        \url{https://datacenter.iers.org/eop/-/somos/5Rgv/latest/9}\\
+        Описание данных:\par
+        \url{https://datacenter.iers.org/eop/-/somos/5Rgv/getMeta/9/finals2000A.all} \\
+        В файле первые столбцы:\\
+        год, месяц, день, модифицированная юлианская дата (MJD), $x_p$, $\sigma_x$, $y_p$, $\sigma_y$, \dots\\ 
+        где $x_p$ и  $y_p$ --- координаты полюса в угловых секундах; год, месяц, дата - двухзначные поля
+        с фиксированной шириной -- 2. 
+\begin{flushleft}
+    \textbf{Поправка за приливные изменения силы тяжести} 
+\end{flushleft}
+Поправка за прилив вычислена по отечественной программе ATLANTIDA3.1\_2014 \\
+Подробнее: \url{http://www.ifz.ru/applied/prognoz-parametrov-zemnykh-prilivov/}\\
+При вычисление учтены упругие свойства Земли и океанические приливы.\\
+Поправка за прилив дана в файле \textrm{tides.dat} с дискретностью 10 минут. Файл имеет структуру:\\
+год-месяц-день час:минута:секунда, поправка за прилив [мкГал]\\
+
+\begin{flushleft}
+    \textbf{Поправка за изменение атмосферного давления} 
+\end{flushleft}
+
+Поправка за изменение атмосферного давления вычисляется по формуле
+\begin{equation*}
+    \Delta g_a = - K \left( P - P_0 \right),
+\end{equation*}
+где $K$ --- барометрический фактор, $P$ --- атмосферное давление в милибарах, $P_0$ --- нормальное
+(модельное) атмосферное давление.
+
+По рекомендации Международной ассоциации геодезии (IAG) $K = 0,3\, \text{мкГал/мбар}$.
+
+Нормальное атмосферное давление вычисляется так
+\begin{equation*}
+    P_0 = 1013,25 \left( 1 - \dfrac{0,0065 H}{288,15} \right)^{5.2599}\quad[\text{мбар}],
+\end{equation*}
+где $H$ --- высота пункта над уровнем моря.
+
+Информация о давлении дана в файле \textrm{pressure.dat} с дискретностью 10 минут. Измерения
+получены с приливного гравиметра gPhone №117. Файл имеет структуру:\\
+год-месяц-день час:минута:секунда, давление [мбар]\\
+
+%\printbibliography
+\end{document}
