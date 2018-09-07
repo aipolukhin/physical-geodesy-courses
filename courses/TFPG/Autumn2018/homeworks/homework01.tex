@@ -1,0 +1,98 @@
+\documentclass[11pt, a4paper,addpoints]{exam}
+
+% Languages and fonts
+\usepackage{cmap} 
+\usepackage[T2A]{fontenc}
+\usepackage[utf8]{inputenc} 
+\usepackage[english, russian]{babel}
+\usepackage{microtype}
+\usepackage{indentfirst}
+\frenchspacing
+
+% Mathematics
+\usepackage{amsmath, amssymb, amsfonts, amsthm, mathtools, fixmath}
+\mathtoolsset{showonlyrefs=true}
+\usepackage{esint, esvect} % integrals and vectors
+\usepackage{systeme} % equation system
+\usepackage{commath} % partials and differentials
+\usepackage{icomma} % smart comma ($0,2$ is a number)
+
+% Floats
+\usepackage{float}
+
+% Tables
+\usepackage{array,tabularx,tabulary,booktabs} % better tables
+\usepackage{longtable}
+\usepackage{multirow}
+
+% Graphics
+\usepackage[pdftex]{graphicx}
+\usepackage{wrapfig}
+
+% Theorems
+\renewcommand{\proofname}{Доказательство}
+
+%\theoremstyle{plain}
+\newtheorem{theorem}{Теорема}[section]
+
+%\theoremstyle{definition}
+\newtheorem{definition}{Определение}
+\newtheorem{corollary}{Следствие}[theorem]
+
+\theoremstyle{remark}
+\newtheorem{remark}{Замечание}
+
+\usepackage[top=20mm,bottom=20mm,left=20mm,right=20mm]{geometry}
+
+\usepackage{soul}
+\usepackage{enumerate} % better numbered lists
+\usepackage{hyperref}
+\usepackage{xcolor}
+\usepackage{tikz} % drawing
+
+%\usepackage{csquotes}
+%\usepackage[style=authoryear,maxcitenames=2,backend=biber,sorting=nty]{biblatex}
+%\bibliography{}
+
+\renewcommand{\epsilon}{\ensuremath{\varepsilon}}
+\renewcommand{\phi}{\ensuremath{\varphi}}
+\renewcommand{\theta}{\vartheta}
+\renewcommand{\kappa}{\ensuremath{\varkappa}}
+\renewcommand{\le}{\ensuremath{\leqslant}}
+\renewcommand{\leq}{\ensuremath{\leqslant}}
+\renewcommand{\ge}{\ensuremath{\geqslant}}
+\renewcommand{\geq}{\ensuremath{\geqslant}}
+
+\usepackage[useregional]{datetime2}
+
+% exam
+\pointsinrightmargin
+\marginpointname{ б.}
+
+% custom maketitle
+\usepackage{titling}
+\setlength{\droptitle}{-4em}
+\posttitle{\end{center}\vspace{-4em}}
+
+\title{{\Large Теория фигур планет и гравиметрия 2018}\\ 
+    {\bf\Large Домашнее задание № 1}}
+\author{}
+\DTMsavedate{deadline}{2018-09-14}
+
+\date{\normalsize\bf Крайний срок сдачи: \DTMusedate{deadline}}
+
+\begin{document}
+\maketitle
+\thispagestyle{empty}
+\begin{questions}
+    \question[3] Закончить вывод уравнения Лапласа в сферических координатах через коэффициенты Ламе.
+    Привести подробный вывод.
+    \question[1] Получить коэффициенты Ламе для геодезической системы координат $B,\ L,\ H$. Привести
+    подробный вывод.
+    \question[1] Выражение для дифференциала дуги $dS$ в произвольных криволинейных координатах получено на
+    занятии. Получите формулу и приведите подробный вывод для элемента объёма $dV = \dif x\dif y\dif z$
+    в произвольных криволинейных координатах через коэффициенты Ламе. 
+    На основе решения двух предыдущих задач выразите элемент объема в сферических и геодезических координатах.
+\end{questions}
+%\printbibliography
+\end{document}
