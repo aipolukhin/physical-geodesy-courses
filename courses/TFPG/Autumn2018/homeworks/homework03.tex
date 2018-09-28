@@ -1,0 +1,116 @@
+\documentclass[11pt, a4paper,addpoints]{exam}
+
+% Languages and fonts
+\usepackage{cmap} 
+\usepackage[T2A]{fontenc}
+\usepackage[utf8]{inputenc} 
+\usepackage[english, russian]{babel}
+\usepackage{microtype}
+\usepackage{indentfirst}
+\frenchspacing
+
+% Mathematics
+\usepackage{amsmath, amssymb, amsfonts, amsthm, mathtools, fixmath}
+\mathtoolsset{showonlyrefs=true}
+\usepackage{esint, esvect} % integrals and vectors
+\usepackage{systeme} % equation system
+\usepackage{commath} % partials and differentials
+\usepackage{icomma} % smart comma ($0,2$ is a number)
+
+% Floats
+\usepackage{float}
+
+% Tables
+\usepackage{array,tabularx,tabulary,booktabs} % better tables
+\usepackage{longtable}
+\usepackage{multirow}
+
+% Graphics
+\usepackage[pdftex]{graphicx}
+\usepackage{wrapfig}
+
+% Theorems
+\renewcommand{\proofname}{Доказательство}
+
+%\theoremstyle{plain}
+\newtheorem{theorem}{Теорема}[section]
+
+%\theoremstyle{definition}
+\newtheorem{definition}{Определение}
+\newtheorem{corollary}{Следствие}[theorem]
+
+\theoremstyle{remark}
+\newtheorem{remark}{Замечание}
+
+\usepackage[top=20mm,bottom=20mm,left=20mm,right=20mm]{geometry}
+
+\usepackage{soul}
+\usepackage{enumerate} % better numbered lists
+\usepackage{hyperref}
+\usepackage{xcolor}
+\usepackage{tikz} % drawing
+
+%\usepackage{csquotes}
+%\usepackage[style=authoryear,maxcitenames=2,backend=biber,sorting=nty]{biblatex}
+%\bibliography{}
+
+\renewcommand{\epsilon}{\ensuremath{\varepsilon}}
+\renewcommand{\phi}{\ensuremath{\varphi}}
+\renewcommand{\theta}{\vartheta}
+\renewcommand{\kappa}{\ensuremath{\varkappa}}
+\renewcommand{\le}{\ensuremath{\leqslant}}
+\renewcommand{\leq}{\ensuremath{\leqslant}}
+\renewcommand{\ge}{\ensuremath{\geqslant}}
+\renewcommand{\geq}{\ensuremath{\geqslant}}
+
+\usepackage[useregional]{datetime2}
+
+% exam
+\pointsinrightmargin
+\marginpointname{ б.}
+
+% custom maketitle
+\usepackage{titling}
+\setlength{\droptitle}{-4em}
+\posttitle{\end{center}\vspace{-4em}}
+
+\title{{\Large Теория фигур планет и гравиметрия 2018}\\ 
+    {\bf\Large Домашнее задание № 3}}
+\author{}
+\DTMsavedate{deadline}{2018-10-12}
+
+\date{\normalsize\bf Крайний срок сдачи: \DTMusedate{deadline}}
+
+\begin{document}
+\maketitle
+\thispagestyle{empty}
+\begin{questions}
+    \question[2] Составить присоединенные функции Лежандра $P_n^k \left( x \right)$ указанных
+    степеней $n$ и порядков $k$. Нормировать эти функции. Убедиться в их нормированности и
+    ортогональности на отрезке~$\left[-1, 1 \right]$ для одного значения $k$.
+    \begin{enumerate}
+        \item $n = 4$, $n = 5$, $k = 1$, $k = 2$.
+        \item $n = 4$, $n = 6$, $k = 3$, $k = 4$.
+        \item $n = 5$, $n = 6$, $k = 1$, $k = 2$.
+        \item $n = 5$, $n = 7$, $k = 4$, $k = 5$.
+        \item $n = 6$, $n = 7$, $k = 1$, $k = 2$.
+        \item $n = 6$, $n = 8$, $k = 3$, $k = 4$.
+        \item $n = 6$, $n = 9$, $k = 5$, $k = 6$.
+        \item $n = 4$, $n = 7$, $k = 2$, $k = 3$.
+        \item $n = 7$, $n = 8$, $k = 4$, $k = 5$.
+        \item $n = 7$, $n = 9$, $k = 6$, $k = 7$.
+    \end{enumerate}
+    \paragraph{Замечание.} Присоединённые функции Лежандра разных степеней $n$, но одного порядка
+    $k$ ортогональны на отрезке $\left[ -1, 1 \right]$.
+    \question[1] Построить графики присоединённых функций Лежандра для всех $k$ при $n = 0, 1, 2, 3$.
+    \question[1] Построить на сфере графики основных (элементарных) сферических функций \\ $A_{nk} P_n^k \left( \cos{\theta} \right)\cos{k\lambda}$ и
+    $B_{nk} P_n^k \left( \cos{\theta} \right)\sin{k\lambda}$ для всех $k$ при $n = 0, 1, 2, 3$.
+    Как называются полученные сферические гармоники?
+    \question[2] Пусть известны значения функции $f\left( \theta, \lambda \right)$ в четырёх точках единичной сферы. 
+    Определить гармонические коэффициенты разложения функции $f\left( \theta, \lambda \right)$ в ряд
+    по сферическим функциям для $n=0, 1$ с помощью её значений в указанных точках. Записать
+    полученный ряд с коэффициентами. По полученному ряду вычислить значение функции в точке
+    на территории МИИГАиК ($\phi=55,764^\circ, \lambda=37,662^\circ$).
+    \end{questions}
+%\printbibliography
+\end{document}
