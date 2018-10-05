@@ -1,0 +1,104 @@
+\documentclass[11pt, a4paper,addpoints]{exam}
+
+% Languages and fonts
+\usepackage{cmap} 
+\usepackage[T2A]{fontenc}
+\usepackage[utf8]{inputenc} 
+\usepackage[english, russian]{babel}
+\usepackage{microtype}
+\usepackage{indentfirst}
+\frenchspacing
+
+% Mathematics
+\usepackage{amsmath, amssymb, amsfonts, amsthm, mathtools, fixmath}
+\mathtoolsset{showonlyrefs=true}
+\usepackage{esint, esvect} % integrals and vectors
+\usepackage{systeme} % equation system
+\usepackage{commath} % partials and differentials
+\usepackage{icomma} % smart comma ($0,2$ is a number)
+
+% Floats
+\usepackage{float}
+
+% Tables
+\usepackage{array,tabularx,tabulary,booktabs} % better tables
+\usepackage{longtable}
+\usepackage{multirow}
+
+% Graphics
+\usepackage[pdftex]{graphicx}
+\usepackage{wrapfig}
+
+% Theorems
+\renewcommand{\proofname}{Доказательство}
+
+%\theoremstyle{plain}
+\newtheorem{theorem}{Теорема}[section]
+
+%\theoremstyle{definition}
+\newtheorem{definition}{Определение}
+\newtheorem{corollary}{Следствие}[theorem]
+
+\theoremstyle{remark}
+\newtheorem{remark}{Замечание}
+
+\usepackage[top=20mm,bottom=20mm,left=20mm,right=20mm]{geometry}
+
+\usepackage{soul}
+\usepackage{enumerate} % better numbered lists
+\usepackage{hyperref}
+\usepackage{xcolor}
+\usepackage{tikz} % drawing
+
+%\usepackage{csquotes}
+%\usepackage[style=authoryear,maxcitenames=2,backend=biber,sorting=nty]{biblatex}
+%\bibliography{}
+
+\renewcommand{\epsilon}{\ensuremath{\varepsilon}}
+\renewcommand{\phi}{\ensuremath{\varphi}}
+\renewcommand{\theta}{\vartheta}
+\renewcommand{\kappa}{\ensuremath{\varkappa}}
+\renewcommand{\le}{\ensuremath{\leqslant}}
+\renewcommand{\leq}{\ensuremath{\leqslant}}
+\renewcommand{\ge}{\ensuremath{\geqslant}}
+\renewcommand{\geq}{\ensuremath{\geqslant}}
+
+\usepackage[useregional]{datetime2}
+
+% exam
+\pointsinrightmargin
+\marginpointname{ б.}
+
+% custom maketitle
+\usepackage{titling}
+\setlength{\droptitle}{-4em}
+\posttitle{\end{center}\vspace{-4em}}
+
+\title{{\Large Теория фигур планет и гравиметрия 2018}\\ 
+    {\bf\Large Домашнее задание № 3}}
+\author{}
+\DTMsavedate{deadline}{2018-10-19}
+
+\date{\normalsize\bf Крайний срок сдачи: \DTMusedate{deadline}}
+
+\begin{document}
+\maketitle
+\thispagestyle{empty}
+\begin{questions}
+    \question Решить внутреннюю и внешнюю задачу Дирихле и внешнюю задачу Неймана для указанной
+    функции, заданной на сфере радиуса $R$ с центром в начале координат:    
+    \begin{enumerate}
+        \item $f\left( \theta, \lambda \right) = \sin{2\theta}\cos\lambda + 1$.
+        \item $f\left( \theta, \lambda \right) = 2 - 3\cos{\theta}\sin^2{\theta}\sin{2\lambda}$.
+        \item $f\left( \theta, \lambda \right) = (5\cos^2\theta - 2)\sin^2\theta$.
+        \item $f\left( \theta, \lambda \right) = 2 + \cos{3\lambda}\sin^3\theta$.
+        \item $f\left( \theta, \lambda \right) = 5 + 6\sin^2\theta\sin{2\lambda}$.
+        \item $f\left( \theta, \lambda \right) = (10\cos^2\theta - 3)\cos{\theta}$.
+        \item $f\left( \theta, \lambda \right) = 3 - \sin{2\theta}\sin{\lambda}$.
+        \item $f\left( \theta, \lambda \right) = 3\sin^2\theta + 2\sin\theta\cos\lambda$.
+        \item $f\left( \theta, \lambda \right) = 5\cos^2\theta + \sin\theta\sin{\lambda}$.
+        \item $f\left( \theta, \lambda \right) = 1/2 + \cos{3\theta}$.
+    \end{enumerate}
+    \end{questions}
+%\printbibliography
+\end{document}
