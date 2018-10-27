@@ -1,0 +1,535 @@
+\documentclass[11pt, a4paper,addpoints]{exam}
+
+% Languages and fonts
+\usepackage{cmap} 
+\usepackage[T2A]{fontenc}
+\usepackage[utf8]{inputenc} 
+\usepackage[english, russian]{babel}
+\usepackage{microtype}
+\usepackage{indentfirst}
+\frenchspacing
+
+% Mathematics
+\usepackage{amsmath, amssymb, amsfonts, amsthm, mathtools, fixmath}
+%\mathtoolsset{showonlyrefs=true}
+\usepackage{esint, esvect} % integrals and vectors
+\usepackage{systeme} % equation system
+\usepackage{commath} % partials and differentials
+\usepackage{icomma} % smart comma ($0,2$ is a number)
+
+% Floats
+\usepackage{float}
+
+% Tables
+\usepackage{array,tabularx,tabulary,booktabs} % better tables
+\usepackage{longtable}
+\usepackage{multirow}
+
+% Graphics
+\usepackage[pdftex]{graphicx}
+\usepackage{wrapfig}
+
+% Theorems
+\renewcommand{\proofname}{Доказательство}
+
+%\theoremstyle{plain}
+\newtheorem{theorem}{Теорема}[section]
+\newtheorem*{theorem*}{Теорема}
+
+%\theoremstyle{definition}
+\newtheorem{definition}{Определение}
+\newtheorem{corollary}{Следствие}[theorem]
+
+\theoremstyle{remark}
+\newtheorem{remark}{Замечание}
+
+\usepackage[top=20mm,bottom=20mm,left=20mm,right=20mm]{geometry}
+
+\usepackage{soul}
+\usepackage{enumerate} % better numbered lists
+\usepackage{hyperref}
+\usepackage{xcolor}
+\usepackage{tikz} % drawing
+
+\usepackage{csquotes}
+\usepackage[style=numeric,maxcitenames=2,backend=biber,sorting=nty]{biblatex}
+\bibliography{../../../../bibliography}
+
+\footer{}{\thepage}{}
+{}
+
+\renewcommand{\epsilon}{\ensuremath{\varepsilon}}
+\renewcommand{\phi}{\ensuremath{\varphi}}
+\renewcommand{\theta}{\vartheta}
+\renewcommand{\kappa}{\ensuremath{\varkappa}}
+\renewcommand{\le}{\ensuremath{\leqslant}}
+\renewcommand{\leq}{\ensuremath{\leqslant}}
+\renewcommand{\ge}{\ensuremath{\geqslant}}
+\renewcommand{\geq}{\ensuremath{\geqslant}}
+
+\usepackage[useregional]{datetime2}
+
+% exam
+\pointsinrightmargin
+\marginpointname{ б.}
+
+% custom maketitle
+\usepackage{titling}
+\setlength{\droptitle}{-4em}
+\posttitle{\end{center}\vspace{-4em}}
+
+\title{{\Large Теория фигур планет и гравиметрия 2018}\\ 
+    {\bf\Large Домашнее задание № 6}}
+\author{}
+\DTMsavedate{deadline}{2018-11-09}
+
+\date{\normalsize\bf Крайний срок сдачи: \DTMusedate{deadline}}
+
+\begin{document}
+\maketitle
+\begin{questions}
+    \question[1] Системы координат и основные геометрические соотношения.
+    \begin{parts}
+    \part В геодезии основными параметрами эллипсоида вращения считают полуоси $a$ и $b$, сжатие
+        $\alpha$, первый $e$ и второй $e'$ эксцентриситеты. Напишите соотношения между этими
+        параметрами.
+    \part Покажите на одном рисунке для произвольной точки на поверхности Земли:
+        \begin{enumerate}
+            \item геодезическую широту и высоту,
+            \item геоцентрические широту и радиус--вектор,
+            \item приведенную широту $u$ и координату $b$ для системы координат $b$, $u$, $L$.
+            \item все возможные параметры эллипсоида, включая линейный эксцентриситет $E$.
+        \end{enumerate}
+    \end{parts}
+        \question[3] Пусть задан уровенный эллипсоид со следующими параметрами
+        \begin{align*}
+            GM &= 3,986004415 \times 10^{14}\,\textrm{м}^3\textrm{с}^{-2},\\
+            a &= 6378136,0 + 0,1\times \left(i - 1\right)\,\textrm{м}, \\
+            J_2 &= 0,00108263,\\
+            \omega &= 7,292115 \times 10^{-5}\,\textrm{рад}^{-1}, 
+        \end{align*}
+        где $i$ --- вариант. Вычислите следующие величины:
+        \begin{enumerate}
+            \item \textbf{Геометрические постоянные}: малую полуось $b$, линейный эксцентриситет $E$, первый эксцентриситет $e$ и его
+                квадрат $e^2$, второй эксцентриситет $e'$ и его квадрат $e'^2$, геометрическое
+                сжатие $\alpha$ и его обратную величиу $1/\alpha$.
+            \item \textbf{Физические постоянные}: значение нормального потенциала силы тяжести на эллипсоиде $U_0$, коэффициенты
+                $J_4$, $J_6$, $J_8$, значение нормальной силы тяжести на экваторе $\gamma_e$ и полюсах
+                $\gamma_p$, коэффициент $k$ нормальной формулы, гравиметрическое сжатие $\beta$ и
+                коэффициент $\beta_1$ приближённой формулы.
+        \end{enumerate}
+    \question[1] Постройте графики: 
+    \begin{parts}
+        \part изменения нормальной силы тяжести $\gamma_0$ на эллипсоиде по формуле Сомильяны, 
+        \part разности формулы Сомильяны и приближённой формулы с параметрами $\gamma_e$, $\beta$,
+        $\beta_1$, 
+    \end{parts}
+    Как меняется нормальная сила тяжести на эллипсоиде? Какое максимальное отличие точной и
+    приближённой формул?
+\end{questions}
+
+\newpage
+    
+\section*{\centering Нормальное поле. Фундаментальные геодезические постоянные}
+\subsection*{\centering Теоретическая справка}
+
+В геодезии обычно используют Нормальную Землю --- модель Земли, обладающей теми или иными свойствами
+--- в виде идеальной планеты, имеющей форму эллипсоида вращения
+\begin{equation*}
+    \dfrac{x_0^2 + y_0^2}{a_0^2} + \dfrac{z_0^2}{b_0^2} = 1,
+\end{equation*}
+где $x_0, y_0, z_0$ --- прямоугольные координаты поверхности эллипсоида, $a_0$, $b_0$ --- большая и
+малая полуоси.
+
+Эта поверхность является уровенной относительно потенциала силы тяжести, то есть на поверхности
+эллипсоида
+\begin{equation*}
+    U = U_0 = const.
+\end{equation*}
+
+Такой эллипсоид называют уровенным. Использование поля силы
+тяжести уровенного эллипсоида в качестве нормального поля удобно
+в геодезии потому, что в этом случае одна и та же поверхность --- 
+эллипсоид --- является отсчетной при решении и 
+геометрических и физических задач.
+
+\subsubsection*{Специальная система координат сжатого эллипсоида вращения}
+Потенциал уровенного эллипсоида находят из решения краевой задачи. Её удобно решать в специальных
+эллипсоидально--гармонических (гармонические потому, что уравненеи Лапласа разрешимо в них методом
+разделения переменных) координатах $b, u, L$, которые связаны с прямоугольными координатами
+$x, y, z$ следующими соотношениями 
+\begin{align*}
+    x &= \sqrt{b^2 + E^2}\cos{u}\cos{L} \\
+    y &= \sqrt{b^2 + E^2}\cos{u}\sin{L} \\
+    z &= b\cos{u},
+\end{align*}
+где $b$ --- малая полуось софокусного отсчетному эллипсоида, проходящего через определяемую точку,
+$u$ --- приведённая широта, $L=\phi$ --- долгота, $E^2 = a^2 - b^2$ --- линейный эксцентриситет.\par
+
+Далее нам понадобятся коэффициенты Ламе этой системы координат. Полагая $q_1 = b, q_2 = u, q_3 = L$, имеем
+\begin{equation}
+    h_1 = \dfrac{\sqrt{b^2 + E^2\sin^2{u}}}{a}, \quad h_2 = \sqrt{b^2 + E^2\sin^2 u},\quad
+    h_3 = \sqrt{b^2 + E^2\cos{u}}.
+    \label{eq:lame}
+\end{equation}
+
+\subsubsection*{Внешний потенцал уровенного эллипсоида}
+
+Легко показать, что центробежный потенциал
+\begin{equation}
+    Q = \dfrac{\omega^2}{2}\left( x^2 + y^2 \right) = \dfrac{\omega^2}{2}r^2\sin^2\theta = 
+    \dfrac{\omega^2}{2}\left( b^2 + E^2 \right)\cos^2{u}
+    \label{eq:centrifugal}
+\end{equation}
+не удовлетворяет уравнению Лапласа и не является регулярным на бесконечности. Такими же свойствами
+обладает и потенцал силы тяжести, поэтому его нельзя напрямую определить из решения краевой задачи.
+
+Возможность решения внешней краевой задачи по форме уровенной поверхности основана на следующей
+теореме.
+\begin{theorem*}{Теорема Стокса.}
+    Если известна форма внешней уровенной поверхности, масса, заключённая внутри этой поверхности и
+    угловая скорость вращения, то внешнее гравитационное поле определено независимо от распределения
+    масс внутри поверхности.
+    \label{the:stokes}
+\end{theorem*}
+
+Краевая задача может быть сформулирована в следующем виде
+\begin{equation}
+    \quad V_0 = U_0 - Q_0,\quad U_0 = const,\quad \Delta V = 0,\quad \lim\limits_{r\to\infty} V = 0,
+    \label{eq:bvp}
+\end{equation}
+где $V_0 = U_0 - Q_0$ --- краевое условие на поверхности эллипсоида, из которого следует, что потенциал притяжения $V_0$ не
+является постоянным на поверхности эллипсоида и зависит, как следует из (\ref{eq:centrifugal}), от
+широты. Эта задача --- иногда называемая задачей Стокса --- является частным случаем задачи Дирихле, когда краевая поверхность является
+уровенной.
+
+Решением (за подробностями стоит обратиться к литературе \cite{Moritz2007,Ogorodova2006}) краевой
+задачи будет следующее выражение
+
+\begin{equation}
+    V = \dfrac{GM}{E} \arctg{\dfrac{E}{b}} + \dfrac{\omega^2}{3} \left( b_0^2 + E^2 \right)
+    \dfrac{q}{q_0} P_2 \left( \sin{u} \right),
+    \label{eq:V}
+\end{equation}
+где
+\begin{equation}
+    q = \left[ \left( 3\dfrac{b^2}{E^2} + 1 \right)\arctg{\dfrac{E}{b}} - 3\dfrac{b}{E} \right],
+    \label{eq:q}
+\end{equation}
+а $q_0$ --- значение $q$ на поверхности эллипсоида при $b=b_0$.
+
+На поверхности эллипсоида 
+\begin{equation}
+    V_0 = \dfrac{GM}{E} \arctg{\dfrac{E}{b_0}} + \dfrac{\omega^2}{3} \left( b_0^2 + E^2 \right)
+    P_2 \left( \sin{u} \right).
+    \label{eq:V0}
+\end{equation}
+Добавляя к (\ref{eq:V}) центробежный потенциал (\ref{eq:centrifugal}), получаем внешний потенциал
+силы тяжести уровенного эллипсоида вращения
+\begin{equation}
+    U = \dfrac{GM}{E} \arctg{\dfrac{E}{b}} + 
+    \dfrac{\omega^2}{3} \left( b^2 + E^2 \right) +
+    \left(\dfrac{\omega^2}{3} \left( b_0^2 + E^2 \right)\dfrac{q}{q_0} -
+    \dfrac{\omega^2}{3} \left( b^2 + E^2 \right)
+    \right) P_2 \left( \sin{u} \right),
+    \label{eq:U}
+\end{equation}
+где учтено, что $Q = \dfrac{\omega^2}{2}\left( b^2 + E^2 \right)\cos^2{u} =
+\dfrac{\omega^2}{3} \left( b^2 + E^2 \right)\left[ 1 - P_2\left( \sin{u} \right) \right]$.
+
+Наконец, на поверхности уровенного эллипсоида при $b = b_0$ получаем выражение достаточно простого вида
+\begin{equation}
+    U_0 = \dfrac{GM}{E} \arctg{\dfrac{E}{b_0}} + 
+    \dfrac{\omega^2}{3} \left( b_0^2 + E^2 \right).
+    \label{eq:U0}
+\end{equation}
+
+
+\subsubsection*{Фундаментальные геодезические постоянные}
+Из выражений (\ref{eq:V}), (\ref{eq:V0}), (\ref{eq:U}), (\ref{eq:U0}) видно, что внешнее
+гравитационное поле уровенного эллипсоида однозначно может быть задано четырьмя параметрами: геоцентрической
+гравитационное постоянной $GM$, угловой скоростью вращения $\omega$, линейным
+эксцентриситетом $E$ и малой полуосью~$b_0$.
+
+Параметры, однозначно определяющие отсчетное поле уровенного эллипсоида называются
+\textbf{фундаментальными геодезическими постоянными}.
+
+Различают первичные и производные фундаментальные постоянные. К первичным относят постоянные,
+которые существуют у реальной Земли. Это стоксовы постоянные $GM$, $G\left( C - A \right)$ и угловая
+скорость вращения $\omega$. К первичным относят также параметр $J_2 = - C_{2,0} = \dfrac{G\left( C -
+A_m\right)}{GMa^2}$.
+
+Для определения нормального поля необходимо также задать четвёртую постоянную, определяющую размер
+Нормальной Земли. Этими параметрами могут служить большая полуось $a_0$, значение потенциала на
+поверхности эллипсоида $U_0$ или значение нормальной силы тяжести на экваторе $\gamma_e$.
+
+Таким образом, исходными параметрами могут служить $GM$, $a$, $G\left( C - A \right)$ (или $J_2$), 
+$\omega$ или $GM$, $U_0$, $G\left( C -
+A\right)$ (или $J_2$), $\omega$. Второй набор параметров имеет то принципиальное преимущество, что
+все параметры, входящие в него, имеют вполне конкретный физический смысл, если в качестве значения
+потенциала $U_0$ на поверхности эллипсоида принять значения реального потенциала силы тяжести $W_0$ на некоторой
+уровенной поверхности, совпадающей со средним уровнем Мирового океана --- геоиде. Только результаты
+измерений спутниковой альтиметрии последних лет позволили достаточно точно определить $W_0$, 
+что открыло перспективу к выводу нового общеземного эллипсоида по параметрам, каждый из которых имеет 
+физический смысл.
+
+Тем временем, пока основным набором параметров остается $GM$, $a$, $J_2$, $\omega$. 
+Так, например, задается эллипсоид GRS 80. Для удобства часто за исходный выдают 
+параметр геометрического сжатия $\alpha$ вместо $J_2$. Однако это не имеет под собой научных
+оснований, лишь практические, поскольку большая часть пользователей нуждается в геометрических
+приложениях. Таким набором исходных параметров обладают эллипсоиды государственных систем координат 
+ГСК--2011 и ПЗ--90.11. Здесь же стоит отметить, что эллипсоид Красовского не является уровенным и
+не используется для физических приложений.
+
+Производные (геометрические и физические) фундаментальные постоянные получают для Нормальной Земли,
+исходя из соотношений между параметрами уровенного эллипсоида. Далее будем рассматривать случай,
+когда в качестве исходных заданы $GM$, $a$, $J_2$, $\omega$.
+
+
+\subsubsection*{Соотношения между фундаментальными постоянными}
+
+Потенциал притяжения планеты может быть представлен в виде ряда шаровых функций
+\begin{equation}
+\label{eq:pot-shexp-1}
+V\left( r, \theta, \lambda \right) = \sum\limits_{n=0}^{\infty} \dfrac{1}{r^{n+1}}
+\sum\limits_{k=0}^{n}\left( A_{nk}\cos{k\lambda} + B_{nk}\sin{k\lambda} \right) P_n^k \left(
+\cos\theta \right)
+\end{equation}
+где $r, \theta, \lambda$ --- сферические координаты, $n$ и $k$ --- степень и порядок,
+$P_{nk}\left( \cos{\theta} \right)$ --- присоединённые функции
+Лежандра, $A_{nk}, B_{nk}$ --- гармонические коэффициенты, иначе --- \textbf{стоксовы постоянные}.
+
+Уровенный эллипсоид обладает осевой симметрией, следовательно, в разложении (\ref{eq:pot-shexp-1}) 
+останутся только зональные гармоники, то есть потенциал не будет зависеть от
+долготы. Кроме того, принимая во внимание, что плоскость экватора является плоскостью симметрии, 
+то останутся только чётные зональные гармоники. Действительно, поскольку эллипсоид --- симметричное
+относительно экватора тело, то и массы его должны быть распределены симметрично. В противном случае,
+возникнет <<грушевидность>> и уровенная поверхность перестанет быть эллипсоидом. Таким образом,
+записываем разложение потенциала притяжения эллипсоида в ряд по шаровым функциям
+\begin{equation}
+        \label{eq:pot-shexp-2b}
+    V = 
+        \sum\limits_{n=0}^{\infty} \dfrac{1}{r^{2n+1}} A_{2\cdot n} 
+        P_{2\cdot n} \left(\cos\theta \right).
+\end{equation}
+
+Но ранее было записано выражение (\ref{eq:V}) для $V$ в эллипсоидально--гармонических координатах.
+Перепишем его еще раз
+\begin{equation}
+    V = \dfrac{GM}{E} \arctg{\dfrac{E}{b}} + \dfrac{\omega^2}{3} \left( b_0^2 + E^2 \right)
+    \dfrac{q}{q_0} P_2 \left( \sin{u} \right).
+    \label{eq:V2}
+\end{equation}
+Теперь можно получить связь выражений (\ref{eq:pot-shexp-2b}) и (\ref{eq:V2}). Для этого разложим
+$\arctg{\frac{E}{b}}$ по степеням $E/b$, получим
+
+\begin{equation}
+    \arctg{\dfrac{E}{b}} = 
+    \dfrac{E}{b} - \dfrac{1}{3}\left( \dfrac{E}{b} \right)^3 + \dfrac{1}{5} \left(\dfrac{E}{b}
+    \right)^5 - \dots =
+    \sum\limits_{n=0}^{\infty}\dfrac{\left( -1 \right)^n}{2n + 1} \left(\dfrac{E}{b}\right)^{2n+1}.
+    \label{eq:arctg-series}
+\end{equation}
+Также разложим $q$ (см. (\ref{eq:q})) по степеням $\frac{E}{b}$:
+\begin{equation}
+    q = 2\left[ \dfrac{1}{15} \dfrac{E^3}{b^3} - \dfrac{2}{35}\dfrac{E^5}{b^5} + \dfrac{3}{63}\dfrac{E^7}{b^7} - \dots \right] = 
+    2\sum\limits_{n=0}^{\infty} \dfrac{n \left( -1 \right)^{n+1}}{\left( 2n+1 \right)\left( 2n+3
+    \right)}\left(\dfrac{E}{b}\right)^{2n+1}.
+    \label{eq:q-series}
+\end{equation}
+Теперь подставим оба разложения в выражение (\ref{eq:V2}), запишем
+\begin{equation}
+    V = \dfrac{GM}{b} \left( 1 - \dfrac{E^2}{3b^2} + \dots + \dfrac{\omega^2 \left( b_0^2 + E^2
+    \right)}{3GMq_0} \left( \dfrac{4}{15}\dfrac{E^3}{b^2} + \dots \right) P_2 \left( \sin{u} \right)
+\right).
+\label{eq:Vexp}
+\end{equation}
+Наконец, преобразуем разложение (\ref{eq:pot-shexp-2b}), перейдя к безразмерным коэффициентам и имея ввиду физический смысл стоксовых
+постоянных первых степеней: 
+\begin{equation}
+    V = \dfrac{GM}{r} \left( 1 - \dfrac{G\left( C - A_m \right)}{GM r^2} P_2\left( \cos{\theta}\right) +
+        \sum\limits_{n = 2}^{\infty} \dfrac{A_{2\cdot n}}{GMr^{2n}} P_{2\cdot n}\left( \cos{\theta}
+    \right) \right).
+\label{eq:pot-shexp-new}
+\end{equation}
+
+Рассмотрим произвольную точку на оси вращения эллипсоида. В этой точке приведенная широта $u$ равна
+геоцентрической $\phi = \theta - 90^\circ$, причем обе они равны $\pi/2$, а радиус--вектор
+$r$ совпадает с координатой $b$. Из выражений (\ref{eq:Vexp}) и (\ref{eq:pot-shexp-new}) записываем
+\begin{equation}
+    \dfrac{GM}{b} \left( 1 - \dfrac{E^2}{3b^2} + \dfrac{\omega^2 \left( b_0^2 + E^2
+    \right)}{3GMq_0} \dfrac{4}{15}\dfrac{E^3}{b^2} + \dots \right)
+    = \dfrac{GM}{b} \left( 1 - \dfrac{G\left( C - A_m \right)}{GM b^2} + \dots\right)
+\end{equation}
+Равенство будет выполняться только если будут равны коэффициенты при одинаковых степенях~$b$.
+Приравняем коэффициенты при $1/b^3$:
+\begin{equation}
+   -\dfrac{1}{3}E^2 + \dfrac{\omega^2 \left( b_0^2 + E^2
+    \right)E^3}{3GMq_0} \dfrac{4}{15}
+    =  - \dfrac{G\left( C - A_m \right)}{GM}
+    \label{eq:pizzetti-1}
+\end{equation}
+или, умножая обе части последнего равенства на $-GM$ и раскрывая $q_0$, получаем знаменитую формулу Пиццетти
+\begin{equation}
+    G\left( C - A_m \right) = \dfrac{1}{3} GM E^2 - \dfrac{4}{45} \dfrac{\omega^2 \left( b_0^2 +
+    E^2\right) E^3}{
+    \left( 1 + 3\dfrac{b^2}{E^2} \right)\arctg\dfrac{E}{b} - 3\dfrac{b}{E}},
+    \label{eq:pizzetti}
+\end{equation}
+которая связывает физические и геометрические параметры уровенного эллипсоида.
+
+Вспомним, что $E = ae$ и подставим это выражение в $\ref{eq:pizzetti-1}$, тогда
+
+\begin{equation*}
+    e_0^2 - \dfrac{4}{15}\dfrac{\omega^2 a_0^2 e_0^3}{GM q_0} = 3\dfrac{G\left( C - A_m
+    \right)}{GM a_0^2}
+\end{equation*}
+или
+\begin{equation*}
+    e_0^2 - \dfrac{4}{15}\dfrac{\omega^2 a_0^2 e_0^3}{GM q_0} = 3\dfrac{G\left( C - A_m
+    \right)}{GM a_0^2}
+\end{equation*}
+
+Введём обозначение $m = \dfrac{\omega^2 a_o^3}{GM}$, $J_2 = \dfrac{G\left( C - A_m
+\right)}{GM a_0^2}$, тогда
+\begin{equation}
+    e_0^2 - \dfrac{4}{15}m\dfrac{e_0^3}{q_0} = 3J_2\quad\Longrightarrow\quad
+    J_2 = \dfrac{e_0^2}{3} - \dfrac{4}{45}m\dfrac{e_0^3}{q_0}.
+    \label{eq:j2e0}
+\end{equation}
+Мы получили еще одну формулу, связывающую физические и геометрические параметры. Все входящие
+в неё величины безразмерны. Её можно было бы использовать, если бы исходными параметрами были
+$a$ и $\alpha$. Тогда, получив коэффициент $J_2$, можно получить коэффициенты $J_{2n}$
+(см. \ref{eq:jn}).
+Если в качестве исходных для уровенного эллипсоида заданы $J_2$ и $a$, то выражение
+\begin{equation}
+    e_0^2 = 3J_2  + \dfrac{4}{15}m\dfrac{e_0^3}{q_0},
+    \label{eq:j2e0-2}
+\end{equation}
+вытекающее из ($\ref{eq:j2e0}$), используется для определения первого эксцентриситета и далее ---
+геометрического сжатия. Поскольку $e_0$ здесь стоит в обеих частях уравнения, то его решают
+итерациями относительно $e_0^2$
+\begin{equation}
+    \left( e_0^2 \right)_{i} = 3J_2  + \dfrac{4}{15}m\left( \dfrac{e_0^3}{q_0} \right)_{i-1},
+    \label{eq:j2e0-3}
+\end{equation}
+принимая в первом приближении $e_0^2 = 3J_2 + m$ (обратите внимание, что в $q_0$ также
+входит эксцентриситет). Итерационное решение можно построить встроенными 
+функциями электронных таблиц MS Excel и его аналогами.
+
+\subsubsection*{Разложение потенциала эллипсоида в ряд по шаровым функциям}
+Если, в соответствии с рекомендацией Международного астрономического союза, для зональных гармоник
+$A_{n0}$ ввести следующее обозначение 
+\begin{equation*}
+    J_n = -C_{n0} = -\dfrac{A_{n0}}{GMa^n},
+\end{equation*}
+то из выражения (\ref{eq:pot-shexp-1}) можно получить
+\begin{equation}
+    V  = \dfrac{GM}{r}   
+        \left[ 1 - \sum\limits_{n=1}^{\infty} \left( \dfrac{a}{r} \right)^{2\cdot n}
+        J_{2\cdot n} P_{2\cdot n} \left( \cos\theta \right) \right].
+        \label{eq:pot-shexp-2c}
+\end{equation}
+
+Здесь бесконечное число членов, но, как уже было выяснено ранее, потенциал эллипсоида может быть
+однозначно задан четырьмя фундаментальными постоянными, поэтому в (\ref{eq:pot-shexp-2c}) остальные
+члены не могут быть независимыми и их можно выразить через $J_2$ (подробности в \cite{Moritz2007, Pellinen1978,
+Ogorodova2006}):
+\begin{equation}
+    J_{2\cdot n} = \left( -1 \right)^{n + 1} \dfrac{3e^{2n-2}}{\left( 2n+1 \right)\left( 2n+3 \right)}
+    \left[ 5nJ_2 - \left( n - 1 \right) e^2 \right].
+    \label{eq:jn}
+\end{equation}
+Ряд ($\ref{eq:pot-shexp-2c}$) особенно полезен, когда действительный потенциал притяжения представлен в виде
+ряда по шаровым функциям. Тогда, вычитая из него притяжение уровенного эллипсоида, можно получить
+коэффициенты разложения аномального потенциала в ряд по шаровым функциям.
+
+\subsubsection*{Сила тяжести на поверхности уровеннного эллипсоида}
+В геодезии и геофизике наиболее часто используемой величиной, связанной с нормальным полем, является
+нормальная сила тяжести $\gamma$. Согласно определению потенциала, сила является его производной.
+Для того, чтобы найти нормальную силу тяжести $\gamma_0$ на эллипсоиде, необходимо найти производную
+потенциала $U$ по внешней нормали $n$ к уровенной поверхности:
+\begin{equation*}
+    \gamma_0 = \left. -\dfrac{\partial U}{\partial n} \right|_{b = b_0}.
+\end{equation*}
+В системе координат $b, u, L$ элемент нормали к эллипсоиду имеет вид $dn = h_1 db$, поэтому,
+используя выражении для $h_1$ из (\ref{eq:lame}), можно записать
+\begin{equation}
+    \gamma_0 =  \left. -\dfrac{1}{h_1}\dfrac{\partial U}{\partial b} \right|_{b = b_0} =
+        \left. \dfrac{a_0}{\sqrt{b_0^2 + E^2\sin^2{u}}} \dpd{U}{b} \right|_{b=b_0}.
+    \label{eq:gamma-0}
+\end{equation}
+
+После дифференцирования (\ref{eq:U}), получим
+\begin{equation}
+    \gamma_0 = \dfrac{1}{\sqrt{b_0^2 + E^2\sin^2{u}}}
+    \left( 
+        \dfrac{GM}{a_0} - \dfrac{2}{3}\omega^2 a_0 b_0 +
+        \dfrac{4}{3}\omega^2 a_0 E
+        \dfrac{1 - \dfrac{b_0}{E}\arctg{\dfrac{E}{b_0}}}{
+        \left( 1 + 3\dfrac{b_0^2}{E^2} \right)\arctg{\dfrac{E}{b_0}} - 3\dfrac{b_0}{E}}
+        P_2 \left( \sin{u} \right)
+    \right).
+    \label{eq:gamma0}
+\end{equation}
+
+По этой формуле при $u = 0$ получаем значение силы тяжести на экваторе уровенного эллипсоида
+\begin{equation}
+    \gamma_e = 
+        \dfrac{GM}{a_0 b_0} - \dfrac{2}{3}\omega^2 a_0 -
+        \dfrac{2}{3}\dfrac{\omega^2 a_0 E}{b_0}
+        \dfrac{1 - \dfrac{b_0}{E}\arctg{\dfrac{E}{b_0}}}{
+        \underbrace{\left( 1 + 3\dfrac{b_0^2}{E^2} \right)\arctg{\dfrac{E}{b_0}} -
+    3\dfrac{b_0}{E}}_{\textrm{Обратите внимание: } q_0}},
+    \label{eq:gamma_e}
+\end{equation}
+при $u = \pi/2$ получаем значение силы тяжести на полюсе
+\begin{equation}
+    \gamma_p = 
+        \dfrac{GM}{a_0^2} - \dfrac{2}{3}\omega^2 b_0 +
+        \dfrac{4}{3}\omega^2 E
+        \dfrac{1 - \dfrac{b_0}{E}\arctg{\dfrac{E}{b_0}}}{
+        \left( 1 + 3\dfrac{b_0^2}{E^2} \right)\arctg{\dfrac{E}{b_0}} - 3\dfrac{b_0}{E}}.
+    \label{eq:gamma_p}
+\end{equation}
+
+Выражение (\ref{eq:gamma0}) можно привести к значительно более удобному для вычислений виду, запишем
+без вывода
+\begin{equation}
+    \gamma_0 = \dfrac{\gamma_e a_0 \cos^2{B} + \gamma_p b_0 \sin^2{B}}{
+    \sqrt{a_0^2\cos^2{B} + b_0^2\sin^2{B}}}.
+    \label{eq:somgliana}
+\end{equation}
+Это известная формула Сомильяны, позволяющая вычислить значение нормальной силы тяжести в
+любой точке на поверхности эллипсоида по геодезической широте $B$. Формулу Сомильяны часто записывают в виде
+\begin{equation}
+    \gamma_0 = \gamma_e\dfrac{1 + k\sin^2{B}}{\sqrt{1 - e^2\sin^2{B}}}, \qquad\textrm{где}\qquad
+    k = \dfrac{b_0\gamma_p - a_0\gamma_e}{a_0\gamma_e}.
+    \label{eq:somgliana-2}
+\end{equation}
+
+В не очень точных приложениях часто используют приближённую формулу, которую можно получить из
+формулы Сомильяны, разложив её в ряд. Опуская вывод, запишем
+\begin{equation}
+    \gamma_0 = \gamma_e \left( 1 + \beta\sin^2{B} - \beta_1\sin^2{2B}  + \dots \right),
+    \label{eq:gamma-series}
+\end{equation}
+где $\beta_1 = \frac{1}{8} \alpha^2 + \frac{1}{4}\alpha\beta$, а
+\begin{equation}
+    \beta = \dfrac{\gamma_p - \gamma_e}{\gamma_e}
+    \label{eq:gravity-f}
+\end{equation}
+--- гравитационное сжатие.
+
+Такой вид, например, имеет нормальная формула Гельмерта
+\begin{equation}
+    \gamma_0 = 978030 \left( 1 + 0,005302\sin^2{B} - 0,000007\sin^2{2B} \right)\quad
+    \textrm{мГал},
+    \label{eq:Helmert}
+\end{equation}
+до сих пор часто используемая для
+вычисления аномалий силы тяжести и составления гравиметрических карт у нас в стране.
+
+\printbibliography
+
+\end{document}

@@ -233,8 +233,8 @@
         A_{22} &= \dfrac{G}{12} \int\limits_\tau \delta r'^2 \sin{2\theta'} \cos{2\lambda'} d\tau =
         \dfrac{G}{4}\int\limits_\tau \delta \left( \left( x'^2 + z'^2 \right) - 
         \left( y'^2 + z'^2 \right) \right)  d\tau, \\
-        B_{22} &= G \int\limits_\tau \delta r'^2 \sin^2{\theta'} \sin{2\lambda'} d\tau =
-        G\int\limits_\tau \delta y'x' d\tau.
+        B_{22} &= G\int\limits_\tau \delta r'^2 \sin^2{\theta'} \sin{2\lambda'} d\tau =
+        \dfrac{G}{2} \int\limits_\tau \delta y'x' d\tau.
     \end{align*}
     Все коэффициенты второй степени связаны с моментами инерции.
 
@@ -319,13 +319,13 @@
     Для  \textbf{центробежных моментов} (произведений инерции), которые являются недиагональными элементами
     тензора инерции, получим
     \begin{equation*}
-        I_{23} = -D = -\int\limits_\tau \delta y' z' d\tau, \quad
-        I_{13} = -E = -\int\limits_\tau \delta x' z' d\tau, \quad
-        I_{12} = -F = -\int\limits_\tau \delta x' y' d\tau, \quad
+        I_{yz} = -D = -\int\limits_\tau \delta y' z' d\tau, \quad
+        I_{xz} = -E = -\int\limits_\tau \delta x' z' d\tau, \quad
+        I_{xy} = -F = -\int\limits_\tau \delta x' y' d\tau, \quad
     \end{equation*}
-    где $I_{23} = -D$ --- центробежный момент инерции относительно оси $x$,
-    $I_{13} = -E$ --- центробежный момент инерции относительно оси $y$,
-    $I_{12} = -F$ --- центробежный момент инерции относительно оси $z$.
+    где $I_{yz} = -D$ --- центробежный момент инерции относительно оси $x$,
+    $I_{xz} = -E$ --- центробежный момент инерции относительно оси $y$,
+    $I_{xy} = -F$ --- центробежный момент инерции относительно оси $z$.
 
     Теперь для коэффициентов второй степени можно записать
     \begin{align*}
