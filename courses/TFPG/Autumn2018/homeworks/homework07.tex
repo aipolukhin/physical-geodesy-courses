@@ -1,0 +1,125 @@
+\documentclass[11pt, a4paper,addpoints]{exam}
+
+% Languages and fonts
+\usepackage{cmap} 
+\usepackage[T2A]{fontenc}
+\usepackage[utf8]{inputenc} 
+\usepackage[english, russian]{babel}
+\usepackage{microtype}
+\usepackage{indentfirst}
+\frenchspacing
+
+% Mathematics
+\usepackage{amsmath, amssymb, amsfonts, amsthm, mathtools, fixmath}
+%\mathtoolsset{showonlyrefs=true}
+\usepackage{esint, esvect} % integrals and vectors
+\usepackage{systeme} % equation system
+\usepackage{commath} % partials and differentials
+\usepackage{icomma} % smart comma ($0,2$ is a number)
+
+% Floats
+\usepackage{float}
+
+% Tables
+\usepackage{array,tabularx,tabulary,booktabs} % better tables
+\usepackage{longtable}
+\usepackage{multirow}
+
+% Graphics
+\usepackage[pdftex]{graphicx}
+\usepackage{wrapfig}
+
+% Theorems
+\renewcommand{\proofname}{Доказательство}
+
+%\theoremstyle{plain}
+\newtheorem{theorem}{Теорема}[section]
+\newtheorem*{theorem*}{Теорема}
+
+%\theoremstyle{definition}
+\newtheorem{definition}{Определение}
+\newtheorem{corollary}{Следствие}[theorem]
+
+\theoremstyle{remark}
+\newtheorem{remark}{Замечание}
+
+\usepackage[top=20mm,bottom=20mm,left=20mm,right=20mm]{geometry}
+
+\usepackage{soul}
+\usepackage{enumerate} % better numbered lists
+\usepackage{hyperref}
+\usepackage{xcolor}
+\usepackage{tikz} % drawing
+
+\usepackage{csquotes}
+\usepackage[style=numeric,maxcitenames=2,backend=biber,sorting=nty]{biblatex}
+\bibliography{../../../../bibliography}
+
+\footer{}{\thepage}{}
+{}
+
+\renewcommand{\epsilon}{\ensuremath{\varepsilon}}
+\renewcommand{\phi}{\ensuremath{\varphi}}
+\renewcommand{\theta}{\vartheta}
+\renewcommand{\kappa}{\ensuremath{\varkappa}}
+\renewcommand{\le}{\ensuremath{\leqslant}}
+\renewcommand{\leq}{\ensuremath{\leqslant}}
+\renewcommand{\ge}{\ensuremath{\geqslant}}
+\renewcommand{\geq}{\ensuremath{\geqslant}}
+
+\usepackage[useregional]{datetime2}
+
+% exam
+\pointsinrightmargin
+\marginpointname{ б.}
+
+% custom maketitle
+\usepackage{titling}
+\setlength{\droptitle}{-4em}
+\posttitle{\end{center}\vspace{-4em}}
+
+\title{{\Large Теория фигур планет и гравиметрия 2018}\\ 
+    {\bf\Large Домашнее задание № 7}}
+\author{}
+\DTMsavedate{deadline}{2018-11-16}
+
+\date{\normalsize\bf Крайний срок сдачи: \DTMusedate{deadline}}
+
+\begin{document}
+\maketitle
+\begin{questions}
+    \question[3] Принять в качестве исходных данных глобальную модель гравитационного поля Земли и
+    координаты точки из домашнего задания №5, а также параметры уровенного эллипсоида~GRS~80.
+    Выполнить следующее.
+    \begin{parts}
+        \part Написать в явном виде разложение нормального потенциала притяжения
+        в ряд по шаровым функциям до $n = 4$ и вычислить его значение 
+        в точке на территории МИИГаиК.
+        \part Вычислить значения коэффициентов разложения аномального потенциала в ряд по шаровым
+        функциям до 4--го порядка и вычислить значение аномального потенциала в точке на территории
+        МИИГАиК по полученным коэффициентам.
+        \part Вычислить значение аномалии высоты для точки на территории МИИГаиК. Считать, что
+        значение нормального потенциала силы тяжести на эллипсоиде равно действительному
+        значению потенциала силы тяжести в начале счёта высот. Нормальную силу тяжести в точке на
+        высоте $H$ над поверхностью эллипсоида с достаточной точностью можно вычислить так
+        \begin{equation*}
+            \gamma = \gamma_0 + \dpd{\gamma}{H} H = \gamma_0 - 0,3086 H,
+        \end{equation*}
+        где $\gamma_0$ --- значение нормальной силы тяжести на эллипсоиде, 
+        $\pd{\gamma}{H} = -0,3086\,\textrm{мГал/м}$ ---
+        вертикальный градиент нормальной силы тяжести на эллипсоиде.
+    \end{parts}
+    \question[2] Вычислить аномалию высоты в пяти равномерно расположенных точках над эллипсоидом на
+    высотах от 0 до 10 км и построить график изменения аномалии высоты с высотой. 
+    \begin{parts}
+        \part Почему аномалия высоты ведет себя таким образом вблизи поверхности Земли? 
+        \part Изменится ли поведение аномалии высоты при дальнейшем увеличении расстояния? Почему?
+        \part Одинаково ли будут меняться геодезические и нормальные высоты при удалении от Земли? 
+        \part Как меняется высота квазигеоида и будет ли меняться геоид?   
+    \end{parts}
+    
+\end{questions}
+
+%\printbibliography
+
+\end{document}
