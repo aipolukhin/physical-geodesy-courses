@@ -1,0 +1,120 @@
+\documentclass[11pt, a4paper,addpoints]{exam}
+
+% Languages and fonts
+\usepackage{cmap} 
+\usepackage[T2A]{fontenc}
+\usepackage[utf8]{inputenc} 
+\usepackage[english, russian]{babel}
+\usepackage{microtype}
+\usepackage{indentfirst}
+\frenchspacing
+
+% Mathematics
+\usepackage{amsmath, amssymb, amsfonts, amsthm, mathtools, fixmath}
+\mathtoolsset{showonlyrefs=true}
+\usepackage{esint, esvect} % integrals and vectors
+\usepackage{systeme} % equation system
+\usepackage{commath} % partials and differentials
+\usepackage{icomma} % smart comma ($0,2$ is a number)
+
+% Floats
+\usepackage{float}
+
+% Tables
+\usepackage{array,tabularx,tabulary,booktabs} % better tables
+\usepackage{longtable}
+\usepackage{multirow}
+
+% Graphics
+\usepackage[pdftex]{graphicx}
+\usepackage{wrapfig}
+
+% Theorems
+\renewcommand{\proofname}{Доказательство}
+
+%\theoremstyle{plain}
+\newtheorem{theorem}{Теорема}[section]
+
+%\theoremstyle{definition}
+\newtheorem{definition}{Определение}
+\newtheorem{corollary}{Следствие}[theorem]
+
+\theoremstyle{remark}
+\newtheorem{remark}{Замечание}
+
+\usepackage[top=20mm,bottom=20mm,left=20mm,right=20mm]{geometry}
+
+\usepackage{soul}
+\usepackage{enumerate} % better numbered lists
+\usepackage{hyperref}
+\usepackage{xcolor}
+\usepackage{tikz} % drawing
+
+%\usepackage{csquotes}
+%\usepackage[style=authoryear,maxcitenames=2,backend=biber,sorting=nty]{biblatex}
+%\bibliography{}
+
+\renewcommand{\epsilon}{\ensuremath{\varepsilon}}
+\renewcommand{\phi}{\ensuremath{\varphi}}
+\renewcommand{\theta}{\vartheta}
+\renewcommand{\kappa}{\ensuremath{\varkappa}}
+\renewcommand{\le}{\ensuremath{\leqslant}}
+\renewcommand{\leq}{\ensuremath{\leqslant}}
+\renewcommand{\ge}{\ensuremath{\geqslant}}
+\renewcommand{\geq}{\ensuremath{\geqslant}}
+
+\usepackage[useregional]{datetime2}
+
+% exam
+\pointsinrightmargin
+\marginpointname{ б.}
+
+% custom maketitle
+\usepackage{titling}
+\setlength{\droptitle}{-4em}
+\posttitle{\end{center}\vspace{-4em}}
+
+\title{{\Large Геодезическая гравиметрия 2018}\\ 
+    {\bf\Large Домашнее задание № 5}}
+\author{}
+\DTMsavedate{deadline}{2018-11-17}
+
+\date{\normalsize\bf Крайний срок сдачи: \DTMusedate{deadline}}
+
+\begin{document}
+\maketitle
+\thispagestyle{empty}
+\begin{questions}
+    \question[1] Составить полиномы Лежандра $P_{n} \left( x \right)$ указанных степеней $n$.
+    \begin{enumerate}
+        \item $n = 4$, $n = 5$.
+        \item $n = 4$, $n = 6$.
+        \item $n = 5$, $n = 6$.
+        \item $n = 5$, $n = 7$.
+        \item $n = 6$, $n = 7$.
+        \item $n = 6$, $n = 8$.
+        \item $n = 6$, $n = 9$.
+        \item $n = 4$, $n = 7$.
+        \item $n = 7$, $n = 8$.
+        \item $n = 7$, $n = 9$.
+    \end{enumerate}
+    \question[1] Построить графики полиномов Лежандра степеней $n = 0, 1, 2, 3$, а также указанных
+    степеней из предыдущей задачи.
+    \question[1] Составить присоединенные функции Лежандра $P_{nk} \left( x \right)$ указанных
+    степеней $n$ и порядков $k$.
+    \begin{enumerate}
+        \item $n = 4$, $n = 5$, $k = 1$, $k = 2$.
+        \item $n = 4$, $n = 6$, $k = 3$, $k = 4$.
+        \item $n = 5$, $n = 6$, $k = 1$, $k = 2$.
+        \item $n = 5$, $n = 7$, $k = 4$, $k = 5$.
+        \item $n = 6$, $n = 7$, $k = 1$, $k = 2$.
+        \item $n = 6$, $n = 8$, $k = 3$, $k = 4$.
+        \item $n = 6$, $n = 9$, $k = 5$, $k = 6$.
+        \item $n = 4$, $n = 7$, $k = 2$, $k = 3$.
+        \item $n = 7$, $n = 8$, $k = 4$, $k = 5$.
+        \item $n = 7$, $n = 9$, $k = 6$, $k = 7$.
+    \end{enumerate}
+    \question[2] Построить графики присоединённых функций Лежандра для всех $k$ при $n = 0, 1, 2, 3$.
+    \end{questions}
+%\printbibliography
+\end{document}
