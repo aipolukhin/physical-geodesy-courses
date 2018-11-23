@@ -1,0 +1,152 @@
+\documentclass[11pt, a4paper,addpoints]{exam}
+
+% Languages and fonts
+\usepackage{cmap} 
+\usepackage[T2A]{fontenc}
+\usepackage[utf8]{inputenc} 
+\usepackage[english, russian]{babel}
+\usepackage{microtype}
+\usepackage{indentfirst}
+\frenchspacing
+
+% Mathematics
+\usepackage{amsmath, amssymb, amsfonts, amsthm, mathtools, fixmath}
+%\mathtoolsset{showonlyrefs=true}
+\usepackage{esint, esvect} % integrals and vectors
+\usepackage{systeme} % equation system
+\usepackage{commath} % partials and differentials
+\usepackage{icomma} % smart comma ($0,2$ is a number)
+
+% Floats
+\usepackage{float}
+
+% Tables
+\usepackage{array,tabularx,tabulary,booktabs} % better tables
+\usepackage{longtable}
+\usepackage{multirow}
+
+% Graphics
+\usepackage[pdftex]{graphicx}
+\usepackage{wrapfig}
+
+% Theorems
+\renewcommand{\proofname}{Доказательство}
+
+%\theoremstyle{plain}
+\newtheorem{theorem}{Теорема}[section]
+\newtheorem*{theorem*}{Теорема}
+
+%\theoremstyle{definition}
+\newtheorem{definition}{Определение}
+\newtheorem{corollary}{Следствие}[theorem]
+
+\theoremstyle{remark}
+\newtheorem{remark}{Замечание}
+
+\usepackage[top=20mm,bottom=20mm,left=20mm,right=20mm]{geometry}
+
+\usepackage{soul}
+\usepackage{enumerate} % better numbered lists
+\usepackage{hyperref}
+\usepackage{xcolor}
+\usepackage{tikz} % drawing
+
+\usepackage{csquotes}
+\usepackage[style=numeric,maxcitenames=2,backend=biber,sorting=nty]{biblatex}
+\bibliography{../../../../bibliography}
+
+\footer{}{\thepage}{}
+{}
+
+\renewcommand{\epsilon}{\ensuremath{\varepsilon}}
+\renewcommand{\phi}{\ensuremath{\varphi}}
+\renewcommand{\theta}{\vartheta}
+\renewcommand{\kappa}{\ensuremath{\varkappa}}
+\renewcommand{\le}{\ensuremath{\leqslant}}
+\renewcommand{\leq}{\ensuremath{\leqslant}}
+\renewcommand{\ge}{\ensuremath{\geqslant}}
+\renewcommand{\geq}{\ensuremath{\geqslant}}
+
+\usepackage[useregional]{datetime2}
+
+% exam
+\pointsinrightmargin
+\marginpointname{ б.}
+
+% custom maketitle
+\usepackage{titling}
+\setlength{\droptitle}{-4em}
+\posttitle{\end{center}\vspace{-4em}}
+
+\title{{\Large Теория фигур планет и гравиметрия 2018}\\ 
+    {\bf\Large Домашнее задание № 9}}
+\author{}
+\DTMsavedate{deadline}{2018-12-07}
+
+\date{\normalsize\bf Крайний срок сдачи: \DTMusedate{deadline}}
+
+\begin{document}
+\maketitle
+\begin{questions}
+    \question Вычисление геопотенциальных чисел.
+
+    Разность геопотенциальных чисел между двумя смежными пунктами нивелирной сети можно вычислить как
+    \begin{equation*}
+        W_i - W_{i + 1} = g_m \Delta h,
+    \end{equation*}
+    где $g_m$ --- среднее значение силы тяжести на пунктах $i$ и ${i+1}$, $\Delta h$ --- превышение.
+
+    Обработку нивелирного полигона следует начинать с вычисления невязки $\epsilon$ полигона и
+    уравнивания разностей $W_i - W_{i+1}$. Поправку $\Delta_i$ в измеренную разность вычисляется по
+    формуле
+    \begin{equation*}
+        \Delta_i = -\dfrac{\epsilon}{\sum\dfrac{1}{p_i}} \dfrac{1}{p_i},
+    \end{equation*}
+    где $p_i$ -- вес, который можно выбрать обратно пропорциональным длине секции $L$ в километрах, то есть
+    $p_i = \dfrac{1}{L}$.
+
+    По уравненным разностям $W_i - W_{i+1}$ вычисляют уравненные геопотенциальные числа $W_0 - W_i$ 
+    всех реперов, приняв в качестве исходного уравненное значения для одного из пунктов полигона из
+    каталога, то есть из исходной сети. Теперь можно сравнить полученные величины со значениями из
+    каталога. Они будут различными, потому что последние были получены в результате уравнивания всей
+    сети, однако значения геопотенциальных чисел будут близкими и служат для контроля грубых ошибок
+    вычислений.
+
+    \question Вычисление нормальных и динамических высот.
+
+    Нормальная высота $H^\gamma$ определяется по формуле
+    \begin{equation*}
+        H^\gamma = \dfrac{W_0 - W_i}{\gamma_m^i}
+    \end{equation*}
+    где $\gamma_m^i$ --- средняя нормальная сила тяжести для точке на высоте $H^\gamma / 2$. Поскольку
+    нормальная высота входит в левую и правую части, то её находят последовательными приближениями. 
+
+    В начальном приближении можно принять
+    \begin{equation*}
+        H^\gamma_{\textrm{прибл.}} = \dfrac{W_i - W_{i+1}}{\gamma_0^i},
+    \end{equation*}
+    где $\gamma_0^i$ --- значение нормальной силы тяжести на эллипсоиде на широте репера. По приближённой высоте
+    вычисляют нормальную силу тяжести
+    \begin{equation*}
+        \gamma_m^i = \gamma_0^i + \dpd{\gamma}{H} \dfrac{H_i^\gamma}{2} =
+        \gamma_0^i - 0,3086 \dfrac{H_i^\gamma}{2}.
+    \end{equation*}
+    После этого вычисляют нормальную высоту в первом приближении, которого обычно бывает достаточно
+    (если нет, то итерации повторяют).
+
+    Динамическую высоту вычисляют по формуле
+    \begin{equation*}
+        H^d = \dfrac{W_0 - W_i}{\gamma_0^{45}},
+    \end{equation*}
+    где $\gamma_0^{45}$ --- значение нормальной силы тяжести на эллипсоиде на широте $45^\circ$.
+    Если широта репера не равна $45^\circ$ и высота над уровнем моря велика, значение
+    $\gamma_0^{45}$ будет сильно отличаться от $\gamma_m$, поэтому динамические высоты в этом случае
+    сильно отличаются от нормальных. Если участок работ небольшой, то для вычисления динамических
+    высот целесообразно использовать среднее значение силы тяжести $g_{\textrm{ср.}}$ на этом
+    участке, тогда динамическая высота будет близка к сумме измеренных превышений $\Delta h$.
+
+    В конце необходимо найти разность вычисленных динамических и нормальных высот $H^d - H^\gamma$.
+\end{questions}
+%\section*{\centering Исходные данные}
+%\printbibliography
+\end{document}

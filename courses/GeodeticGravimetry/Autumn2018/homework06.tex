@@ -1,0 +1,130 @@
+\documentclass[11pt, a4paper,addpoints]{exam}
+
+% Languages and fonts
+\usepackage{cmap} 
+\usepackage[T2A]{fontenc}
+\usepackage[utf8]{inputenc} 
+\usepackage[english, russian]{babel}
+\usepackage{microtype}
+\usepackage{indentfirst}
+\frenchspacing
+
+% Mathematics
+\usepackage{amsmath, amssymb, amsfonts, amsthm, mathtools, fixmath}
+\mathtoolsset{showonlyrefs=true}
+\usepackage{esint, esvect} % integrals and vectors
+\usepackage{systeme} % equation system
+\usepackage{commath} % partials and differentials
+\usepackage{icomma} % smart comma ($0,2$ is a number)
+
+% Floats
+\usepackage{float}
+
+% Tables
+\usepackage{array,tabularx,tabulary,booktabs} % better tables
+\usepackage{longtable}
+\usepackage{multirow}
+
+% Graphics
+\usepackage[pdftex]{graphicx}
+\usepackage{wrapfig}
+
+% Theorems
+\renewcommand{\proofname}{Доказательство}
+
+%\theoremstyle{plain}
+\newtheorem{theorem}{Теорема}[section]
+
+%\theoremstyle{definition}
+\newtheorem{definition}{Определение}
+\newtheorem{corollary}{Следствие}[theorem]
+
+\theoremstyle{remark}
+\newtheorem{remark}{Замечание}
+
+\usepackage[top=20mm,bottom=20mm,left=20mm,right=20mm]{geometry}
+
+\usepackage{soul}
+\usepackage{enumerate} % better numbered lists
+\usepackage{hyperref}
+\usepackage{xcolor}
+\usepackage{tikz} % drawing
+
+%\usepackage{csquotes}
+%\usepackage[style=authoryear,maxcitenames=2,backend=biber,sorting=nty]{biblatex}
+%\bibliography{}
+
+\renewcommand{\epsilon}{\ensuremath{\varepsilon}}
+\renewcommand{\phi}{\ensuremath{\varphi}}
+\renewcommand{\theta}{\vartheta}
+\renewcommand{\kappa}{\ensuremath{\varkappa}}
+\renewcommand{\le}{\ensuremath{\leqslant}}
+\renewcommand{\leq}{\ensuremath{\leqslant}}
+\renewcommand{\ge}{\ensuremath{\geqslant}}
+\renewcommand{\geq}{\ensuremath{\geqslant}}
+
+\usepackage[useregional]{datetime2}
+
+% exam
+\pointsinrightmargin
+\marginpointname{ б.}
+
+% custom maketitle
+\usepackage{titling}
+\setlength{\droptitle}{-4em}
+\posttitle{\end{center}\vspace{-4em}}
+
+\title{{\Large Геодезическая гравиметрия 2018}\\ 
+    {\bf\Large Домашнее задание № 6}}
+\author{}
+\DTMsavedate{deadline}{2018-12-01}
+
+\date{\normalsize\bf Крайний срок сдачи: \DTMusedate{deadline}}
+
+\begin{document}
+\maketitle
+\thispagestyle{empty}
+\begin{questions}
+        \question Пусть потенциал притяжения представлен в видя ряда по шаровым функциям
+        \begin{equation}
+        V \left( r, \phi, \lambda \right) = \dfrac{GM}{r}   
+            \sum\limits_{n=0}^{\infty} \left( \dfrac{a}{r} \right)^n
+        \sum\limits_{k=0}^{n} \left(  
+        \bar{C}_{nk}\cos{k\lambda} + \bar{S}_{nk}\sin{k\lambda}
+        \right) \bar{P}_{nk} \left( \sin{\phi} \right),
+    \end{equation}
+    где $r, \phi, \lambda$ --- сферические координаты, $n$ и $k$ --- степень и порядок,
+    $\bar{C}_{nk},\bar{S}_{nk}$ --- полностью нормированные стоксовы постоянные, 
+    $\bar{P}_{nk}\left( \sin{\phi} \right)$ --- полностью нормированные присоединённые функции
+    Лежандра, $GM$ --- планетоцентрическая гравитационная постоянная.
+        \begin{parts}
+        \part Написать в общем виде выражение для частной производной $\dpd{V}{r}$.
+        \part Написать в явном виде разложение силы тяжести в ряд по шаровым функциям до
+        4--го порядка в радиальном приближении ($|\vec{g}| = |\nabla W | \approx |\partial W /
+        \partial r$|). 
+        \part Вычислить значение потенциала притяжения, потенциала силы тяжести и силы тяжести
+        (в радиальном приближении) по глобальной модели гравитационного поля Земли, ограничившись первыми четырьмя степенями
+        разложения ($n_{max} = 4$), для точки на территории МИИГАиК с координатами (эллипсоид $WGS84$):
+        \begin{equation*}
+            B = 55,764058^\circ,\quad L = 37,661425^\circ,\quad H = 158,064\,\textrm{м}.
+        \end{equation*}
+    \end{parts}
+\end{questions}
+   \section*{\centering Получение модели}
+    Глобальные модели гравитационного поля можно получить с сайта Международного центра для глобальных
+    моделей (ICGEM). Для этого необходимо сделать следующее.
+    \begin{enumerate}
+        \item Зайти в раздел Static Models (статические модели) по адресу:\\
+            \url{http://icgem.gfz-potsdam.de/tom_longtime}.
+        \item Из списка найти модель с номером $Nr = 167 - i$, где $i$ --- номер варианта.
+        \item Скачать файл модели с расширением *.gfc.
+        \item В заголовке файла: \\
+            earth\_gravity\_constant -- геоцентрическая гравитационная постоянная, \\
+            radius --- значение $a$, которое использовалось для получения безразмерных
+            коэффициентов, \\
+            norm --- норма коэффициентов (необходимо убедиться, что здесь стоит fully\_normalized
+            --- полностью нормированные).
+    \end{enumerate}
+
+%\printbibliography
+\end{document}

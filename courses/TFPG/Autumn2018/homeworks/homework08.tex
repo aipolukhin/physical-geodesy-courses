@@ -1,0 +1,131 @@
+\documentclass[11pt, a4paper,addpoints]{exam}
+
+% Languages and fonts
+\usepackage{cmap} 
+\usepackage[T2A]{fontenc}
+\usepackage[utf8]{inputenc} 
+\usepackage[english, russian]{babel}
+\usepackage{microtype}
+\usepackage{indentfirst}
+\frenchspacing
+
+% Mathematics
+\usepackage{amsmath, amssymb, amsfonts, amsthm, mathtools, fixmath}
+%\mathtoolsset{showonlyrefs=true}
+\usepackage{esint, esvect} % integrals and vectors
+\usepackage{systeme} % equation system
+\usepackage{commath} % partials and differentials
+\usepackage{icomma} % smart comma ($0,2$ is a number)
+
+% Floats
+\usepackage{float}
+
+% Tables
+\usepackage{array,tabularx,tabulary,booktabs} % better tables
+\usepackage{longtable}
+\usepackage{multirow}
+
+% Graphics
+\usepackage[pdftex]{graphicx}
+\usepackage{wrapfig}
+
+% Theorems
+\renewcommand{\proofname}{Доказательство}
+
+%\theoremstyle{plain}
+\newtheorem{theorem}{Теорема}[section]
+\newtheorem*{theorem*}{Теорема}
+
+%\theoremstyle{definition}
+\newtheorem{definition}{Определение}
+\newtheorem{corollary}{Следствие}[theorem]
+
+\theoremstyle{remark}
+\newtheorem{remark}{Замечание}
+
+\usepackage[top=20mm,bottom=20mm,left=20mm,right=20mm]{geometry}
+
+\usepackage{soul}
+\usepackage{enumerate} % better numbered lists
+\usepackage{hyperref}
+\usepackage{xcolor}
+\usepackage{tikz} % drawing
+
+\usepackage{csquotes}
+\usepackage[style=numeric,maxcitenames=2,backend=biber,sorting=nty]{biblatex}
+\bibliography{../../../../bibliography}
+
+\footer{}{\thepage}{}
+{}
+
+\renewcommand{\epsilon}{\ensuremath{\varepsilon}}
+\renewcommand{\phi}{\ensuremath{\varphi}}
+\renewcommand{\theta}{\vartheta}
+\renewcommand{\kappa}{\ensuremath{\varkappa}}
+\renewcommand{\le}{\ensuremath{\leqslant}}
+\renewcommand{\leq}{\ensuremath{\leqslant}}
+\renewcommand{\ge}{\ensuremath{\geqslant}}
+\renewcommand{\geq}{\ensuremath{\geqslant}}
+
+\usepackage[useregional]{datetime2}
+
+% exam
+\pointsinrightmargin
+\marginpointname{ б.}
+
+% custom maketitle
+\usepackage{titling}
+\setlength{\droptitle}{-4em}
+\posttitle{\end{center}\vspace{-4em}}
+
+\title{{\Large Теория фигур планет и гравиметрия 2018}\\ 
+    {\bf\Large Домашнее задание № 8}}
+\author{}
+\DTMsavedate{deadline}{2018-11-30}
+
+\date{\normalsize\bf Крайний срок сдачи: \DTMusedate{deadline}}
+
+\begin{document}
+\maketitle
+\begin{questions}
+    \question Вычислить аномалии в свободном воздухе $g-\gamma$ и аномалии Буге $\Delta g_{B}$
+    ($\delta = 2,67\,\textrm{г/см}^3$) для
+    всех пунктов каталога согласно своему варианту. Точность вычисления $0,1\,\textrm{мГал}$.
+
+    Аномалию в свободном воздухе находят по формуле
+    \begin{equation*}
+        \Delta g = g - \gamma = g - \left( \gamma_0 + \dpd{\gamma}{H} H \right),
+    \end{equation*}
+    где $g$ --- измеренное значение силы тяжести из каталога, $\gamma_0$ --- значение нормальной
+    силы тяжести на эллипсоиде, вычисляемое по формуле Гельмерта 1901---1909 г.:
+    \begin{equation*}
+        \gamma_0 = 978030 \left( 1 + 0,005302\sin^2{B} - 0,000007\sin^2{2B} \right) \quad \left(
+        \textrm{мГал} \right),
+    \end{equation*}
+    где $B$ --- геодезическая широта. Редукция в свободном воздухе (поправка за высоту) вычисляется так
+    \begin{equation*}
+        \dpd{\gamma}{H}H = -0,3086 H \left( \textrm{мГал} \right),
+    \end{equation*}
+    где $\dpd{\gamma}{H} = -0,3086\,\textrm{мГал/м}$ --- нормальный вертикальный градиент силы
+    тяжести, $H$ --- высота в принятой системе высот. 
+
+    Аномалию Буге вычисляют по формуле
+    \begin{equation*}
+        \Delta g_B = \Delta g - 2\pi G \delta H,
+    \end{equation*}
+    где $2\pi G \delta H$ --- поправка за промежуточный слой (редукция Буге). 
+    $G = 6,673\cdot 10^{-8}\,\textrm{см}^3/(\textrm{г}\cdot\textrm{с}^2)$ --- постоянная тяготения,
+    используя значение которой для аномалии Буге можно записать
+    \begin{equation*}
+        \Delta g_B = \Delta g - 0,0419 \delta H.
+    \end{equation*}
+    \question Построить карту аномалий в свободном воздухе и аномалий Буге только по пунктам с
+    подписанными аномалиями (10 пунктов из каталога исключаются).
+    \question Построить график зависимости аномалий в свободном воздухе и аномалий Буге от высоты
+    для всех пунктов каталога. Предполагая зависимость аномалий от высоты линейной, провести
+    регрессионную прямую и получить коэффициент $\Delta g / \Delta H$ в мГал/м для обеих аномалий.
+    \question Вычислить ошибку $E$ интерполяции гравиметрической карты по десяти исключённым из каталога
+    пунктам.
+\end{questions}
+%\printbibliography
+\end{document}
