@@ -66,6 +66,9 @@
 \renewcommand{\ge}{\ensuremath{\geqslant}}
 \renewcommand{\geq}{\ensuremath{\geqslant}}
 
+\newcommand{\zetaag}{\zeta^{\textrm{АГ}}}
+\newcommand{\zetag}{\zeta^{\textrm{Г}}}
+
 \usepackage[useregional]{datetime2}
 
 % exam
@@ -80,7 +83,7 @@
 \title{{\Large Геодезическая гравиметрия 2018}\\ 
     {\bf\Large Домашнее задание № 7}}
 \author{}
-\DTMsavedate{deadline}{2018-12-14}
+\DTMsavedate{deadline}{2018-12-21}
 
 \date{\normalsize\bf Крайний срок сдачи: \DTMusedate{deadline}}
 
@@ -187,7 +190,54 @@
     \begin{equation*}
         \eta = \dfrac{\sum\Delta h - (\sum\Delta h)_\textrm{теор.}}{\sqrt{L}}
     \end{equation*}
-    и выражается в $\textrm{мм} / \sqrt{\textrm{км}}$.
+
+     \question Выполнить спутниковое нивелирование на прямолинейном участке нивелирного полигона.
+
+    Спутниковое нивелироване необходимо выполнить на прямолинейном участке полигона, содержащего по
+    крайней мере три репера. Крайние реперы принимаются в качестве исходных, остальные ---
+    определяемые.
+
+    Интерполированная нормальная высота находится по формуле
+    \begin{equation*}
+        H_{\textrm{инт.}}^\gamma = H - \zetaag_{\textrm{инт.}} = H - \zetag -
+        \delta\zeta_{\textrm{инт.}},
+    \end{equation*}
+    где $\delta\zeta_{\textrm{инт.}}$ --- интерполированная разность  астрономо--геодезической
+    $\zetaag$ и
+    гравиметрической $\zetag$ аномалий высоты, которая в самом простом случае 
+    может быть получена методом линейной интерполяции от исходных пунктов, а именно
+    \begin{equation*}
+        \delta\zeta_{\textrm{инт.}} =
+        \delta\zeta_1 + \dfrac{\delta\zeta_2 - \delta\zeta_1}{L_{12}} \Delta L,\qquad 
+        \delta\zeta_i = \underbrace{\left( H_i - H^\gamma_i \right)}_{\zetaag_i} - \zetag_i.
+    \end{equation*}
+    Здесь $L_{12}$ --- расстояние между исходными реперами, $\Delta L$ --- расстояние между первым исходным
+    репером и определяемым пунктом. Таким образом, предполагается, что разность $\delta\zeta_{\textrm{инт.}}$
+    меняется линейно и это изменение зависит только от расстояния.
+
+    Геодезическая высота и гравиметрическая аномалия высоты берутся из каталога.
+
+    Полученные методом спутникового нивелирования нормальные высоты необходимо сравнить с
+    уравненными высотами, полученными из обработки классического нивелирования. По этим~$n$ разностям
+    $\Delta H^\gamma = H_{\textrm{инт.}}^\gamma - H^\gamma$ можно оценить точность спутникового нивелирование как
+    \begin{equation*}
+        m_{H_c} = \sqrt{\dfrac{\sum\limits_{i=1}^n{\Delta H^\gamma_i}^2}{n}},
+    \end{equation*}
+    а также получить случайную ошибку спутникового нивелирования
+    \begin{equation*}
+        \eta_c = \dfrac{m_{H_c}}{\sqrt{L}},
+    \end{equation*}
+    где $L$ --- длина линии интерполирования, то есть расстояние между исходными реперами.
+
+    В конце необходимо сравнить случайную ошибку геометрического нивелирования  $\eta$ и
+    спутникового нивелирования $\eta_c$.
+%\section*{\centering Исходные данные}
+
+\end{questions}
+%\section*{\centering Исходные данные}
+%\printbibliography
+\end{document}
+   и выражается в $\textrm{мм} / \sqrt{\textrm{км}}$.
 \end{questions}
 
 %\printbibliography

@@ -1,0 +1,134 @@
+\documentclass[11pt, a4paper,addpoints]{exam}
+
+% Languages and fonts
+\usepackage{cmap} 
+\usepackage[T2A]{fontenc}
+\usepackage[utf8]{inputenc} 
+\usepackage[english, russian]{babel}
+\usepackage{microtype}
+\usepackage{indentfirst}
+\frenchspacing
+
+% Mathematics
+\usepackage{amsmath, amssymb, amsfonts, amsthm, mathtools, fixmath}
+%\mathtoolsset{showonlyrefs=true}
+\usepackage{esint, esvect} % integrals and vectors
+\usepackage{systeme} % equation system
+\usepackage{commath} % partials and differentials
+\usepackage{icomma} % smart comma ($0,2$ is a number)
+
+% Floats
+\usepackage{float}
+
+% Tables
+\usepackage{array,tabularx,tabulary,booktabs} % better tables
+\usepackage{longtable}
+\usepackage{multirow}
+
+% Graphics
+\usepackage[pdftex]{graphicx}
+\usepackage{wrapfig}
+
+% Theorems
+\renewcommand{\proofname}{Доказательство}
+
+%\theoremstyle{plain}
+\newtheorem{theorem}{Теорема}[section]
+\newtheorem*{theorem*}{Теорема}
+
+%\theoremstyle{definition}
+\newtheorem{definition}{Определение}
+\newtheorem{corollary}{Следствие}[theorem]
+
+\theoremstyle{remark}
+\newtheorem{remark}{Замечание}
+
+\usepackage[top=20mm,bottom=20mm,left=20mm,right=20mm]{geometry}
+
+\usepackage{soul}
+\usepackage{enumerate} % better numbered lists
+\usepackage{hyperref}
+\usepackage{xcolor}
+\usepackage{tikz} % drawing
+
+\usepackage{csquotes}
+\usepackage[style=numeric,maxcitenames=2,backend=biber,sorting=nty]{biblatex}
+\bibliography{../../../../bibliography}
+
+\footer{}{\thepage}{}
+{}
+
+\renewcommand{\epsilon}{\ensuremath{\varepsilon}}
+\renewcommand{\phi}{\ensuremath{\varphi}}
+\renewcommand{\theta}{\vartheta}
+\renewcommand{\kappa}{\ensuremath{\varkappa}}
+\renewcommand{\le}{\ensuremath{\leqslant}}
+\renewcommand{\leq}{\ensuremath{\leqslant}}
+\renewcommand{\ge}{\ensuremath{\geqslant}}
+\renewcommand{\geq}{\ensuremath{\geqslant}}
+
+\usepackage[useregional]{datetime2}
+
+% exam
+\pointsinrightmargin
+\marginpointname{ б.}
+
+% custom maketitle
+\usepackage{titling}
+\setlength{\droptitle}{-4em}
+\posttitle{\end{center}\vspace{-4em}}
+
+\title{{\Large Геодезическая гравиметрия 2018}\\ 
+    {\bf\Large Домашнее задание № 8}}
+\author{}
+\DTMsavedate{deadline}{2018-12-21}
+
+\date{\normalsize\bf Крайний срок сдачи: \DTMusedate{deadline}}
+
+\begin{document}
+\maketitle
+\begin{questions}
+    \question Построить график функции Стокса 
+    \begin{equation*}
+        S \left( \psi \right) = \cosec{\dfrac{\psi}{2}} + 1 - 6\sin{\dfrac{\psi}{2}} - 
+        \cos{\psi}\left[ 5 + 3\ln\left( \sin{\dfrac{\psi}{2}} + \sin^2{\dfrac{\psi}{2}} \right) \right]
+    \end{equation*}
+    в интервале $\psi$ от
+    $0^\circ$ до $180^\circ$. Опиcать поведение функции (нули, минимум, максимум, экстремумы).
+
+    \question Вычислить местную аномалию высоты по гравиметрической карте в четырёх точках.
+
+    Для выполнения задания в середине гравиметрической карты необходимо выбрать четыре соседние
+    трапеции (координаты центров этих трапеций и будут служить координатами точек вычисления).
+
+    Гравиметрическую аномалию высоты в ограниченной области можно получить по формуле
+    \begin{equation*}
+        \zeta = \dfrac{R}{4\pi\gamma} \sum\limits_{i} \Delta \bar{g}_i S_i\left( \psi \right)
+        \Delta\omega_i,
+    \end{equation*}
+    где $S_i\left( \psi \right)$ --- функция Стокса, расчитанная для центра трапеции,
+    $\Delta\omega_i = \cos{B_{\textrm{ср.}}}\Delta L_i \Delta B_i$ --- площадь трапеции, $\gamma$
+    --- значение нормальной силы тяжести в определяемой точке, которую достаточно принять равной
+    $\gamma_0$ --- нормальной силе тяжести на эллипсоиде.
+    Коэффициенты $\dfrac{R}{4\pi\gamma} S_i\left(\psi \right)\Delta\omega_i$ не зависят от
+    долготы исследуемой точки, их можно рассчитать заранее для каждой параллели.
+
+    Суммирование ведут по всем трапециям, кроме той, которая содержит саму определяемую точку. В ней
+    функция Стокса обращается в бесконечность, поэтому её необходимо проинтегрировать аналитически,
+    а область вычисления разделить на две части --- нулевую зону, непосредственно примыкающую к точке, и
+    ближнюю зону, вычисление в которой ведется по приведенной выше формуле. 
+    Значение в нулевой зоне может быть приближённо представлено (после интегрирования функции
+    Стокса) так
+    \begin{equation*}
+        \zeta_{\textrm{н.з.}} \approx \dfrac{s_0}{\gamma} \Delta g_P \approx \dfrac{\sqrt{\Delta x\Delta
+        y}}{\gamma \sqrt{\pi}} \Delta g_P,
+    \end{equation*}
+    где $s_0$ --- радиус нулевой зоны, $\Delta x, \Delta y$ --- размеры трапеции в километрах,
+    $\Delta g_P$ --- аномалия силы тяжести в определяемой точке. 
+
+    Оба результата, в ближней и нулевой зоне, складывают $\zeta = \zeta_{\textrm{н.з.}} +
+    \zeta_{\textrm{б.з.}}$ и получают местную гравиметрическую аномалию высоты.
+\end{questions}
+%\section*{\centering Исходные данные}
+%\printbibliography
+\end{document}
