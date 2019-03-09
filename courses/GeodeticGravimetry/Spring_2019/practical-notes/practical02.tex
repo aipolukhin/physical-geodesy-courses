@@ -78,11 +78,11 @@
 \setlength{\droptitle}{-4em}
 \posttitle{\end{center}\vspace{-3em}}
 
-\title{{\Large Геодезическая гравиметрия 2018}\\ 
+\title{{\Large Геодезическая гравиметрия 2019}\\ 
     {\bf\Large Практическое занятие № 2} \\
 {\Large Притяжение. Основные понятия и свойства}}
 \author{}
-\DTMsavedate{lessondate}{2018-02-20}
+\DTMsavedate{lessondate}{2019-02-18}
 \date{\DTMusedate{lessondate}}
 
 \begin{document}
@@ -98,7 +98,7 @@
 \begin{equation*}
     F_{12} = G\dfrac{m_1m_2}{r_{12}^2},
 \end{equation*}
-где $G$ (также обозначается как $f,\gamma$)--- гравитационная постоянная, 
+где $G$ (также обозначается как $f, \gamma$)--- гравитационная постоянная, 
 
 \begin{problem}
     Чему равна скорость распространения притяжения?
@@ -181,9 +181,9 @@
     на её сферической поверхности, предполагая, что вся её масса сосредоточена в центре.
 \end{problem}
 
-\section{Сила притяжение в векторной форме}
+\section{Сила притяжения в векторной форме}
 \begin{equation*}
-    \vv{F} = Gm\dfrac{\vv{r}}{r^3}
+    \vv{F} = -Gm\dfrac{\vv{r}}{r^3}
 \end{equation*}
 Радиус -- вектор $\vv{r}$ направлен от притягивающей токи $P_1 (x_1, y_1, z_1)$ к притягиваемой $P_2
 (x_2, y_2, z_2)$, его длина равна
@@ -239,6 +239,14 @@ $\vv{r}$, запишем
     Потенциал --- скалярная функция, частные производные которой по осям координат равны проекциям
     действующей силы на соотвествующие оси.
 \end{definition}
+\begin{definition}
+    Потенциал --- скалярная функция $V$, градиент которой равен силе $\vv{F}$. 
+\end{definition}
+
+\begin{problem}
+	Что такое градиент?
+\end{problem}
+
 \paragraph{Градиент.} 
 \begin{align*}
     &\vv{F} = \nabla V = \textrm{grad} V = \begin{pmatrix}
@@ -329,12 +337,12 @@ $P'_2$.
 \end{align*}
 
 \begin{equation*}
-    \dif m = \rho\left( x, y, z \right)\dif v = \rho\left( x, y, z \right)\dif x\dif y\dif z
+    \dif m\left( x, y, z \right) = \rho\left( x, y, z \right)\dif v\left( x, y, z \right) = \rho\left( x, y, z \right)\dif x\dif y\dif z
 \end{equation*}
 
 \begin{equation*}
-    V = \iiint\limits_{\Omega}\dfrac{\dif m}{r} = 
-    \iiint\limits_{\Omega}\dfrac{\rho\left( x, y, z \right)}{r}\dif x\dif y\dif z
+    V = G\iiint\limits_{\Omega}\dfrac{\dif m}{r} = 
+    G\iiint\limits_{\Omega}\dfrac{\rho\left( x, y, z \right)}{r}\dif x\dif y\dif z
 \end{equation*}
 
 \printbibliography
